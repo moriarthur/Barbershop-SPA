@@ -29,27 +29,41 @@ export default function App() {
   // Scroll to section
   const handleNavigate = (section: string) => {
     setCurrentSection(section);
-    
+
     if (section === 'booking') {
       setIsBookingOpen(true);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      setIsBookingOpen(false);
-      
-      if (section === 'home') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Close booking if open
+      if (isBookingOpen) {
+        setIsBookingOpen(false);
+        setSelectedService(null);
+        setSelectedCategory(null);
+
+        // Wait for DOM to update before scrolling
+        setTimeout(() => {
+          scrollToSection(section);
+        }, 100);
       } else {
-        const element = document.getElementById(section);
-        if (element) {
-          const offset = 80; // Account for fixed navigation
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - offset;
-          
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
+        scrollToSection(section);
+      }
+    }
+  };
+
+  const scrollToSection = (section: string) => {
+    if (section === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const element = document.getElementById(section);
+      if (element) {
+        const offset = 80; // Account for fixed navigation
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
     }
   };
@@ -130,7 +144,7 @@ export default function App() {
           <Barbers />
           <Gallery />
           <Contact />
-          <Reviews />
+          <Reviews onBookNow={() => handleNavigate('booking')} />
           <Footer onOpenLegal={handleOpenLegal} />
           <FloatingActionButton onBookNow={() => handleNavigate('booking')} />
         </>

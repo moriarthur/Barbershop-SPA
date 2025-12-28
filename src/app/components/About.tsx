@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from './ui/card';
 import { Award, Heart, Users, Clock } from 'lucide-react';
+import interiorImage from '../../assets/Interior_2.jpg';
 
 export function About() {
   const features = [
@@ -32,14 +33,14 @@ export function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
           {/* Text Content */}
           <div>
-            <div className="inline-flex items-center mb-4">
+            <div className="inline-flex items-center mb-4 select-none">
               <div className="h-px w-12 bg-primary/50"></div>
               <span className="px-4 text-primary uppercase tracking-widest text-sm">
                 Über uns
               </span>
             </div>
             <h2
-              className="text-3xl sm:text-4xl md:text-5xl mb-6 text-foreground"
+              className="text-3xl sm:text-4xl md:text-5xl mb-6 text-foreground select-none"
               style={{ fontFamily: 'Playfair Display, serif' }}
             >
               Tradition trifft<br />
@@ -47,17 +48,17 @@ export function About() {
             </h2>
             <div className="space-y-4 text-foreground/80 leading-relaxed">
               <p>
-                Willkommen im Schiersteiner Barbershop – Ihrem Premium-Salon für klassisches 
+                Willkommen im Schiersteiner Barbershop – Ihrem Premium-Salon für klassisches
                 Barbier-Handwerk im Herzen von Wiesbaden-Schierstein.
               </p>
               <p>
-                Seit Jahren steht unser Name für exzellente Schnitte, professionelle Bartpflege 
-                und erstklassige Damenfrisuren. Unser erfahrenes Team verbindet traditionelle 
+                Seit Jahren steht unser Name für exzellente Schnitte, professionelle Bartpflege
+                und erstklassige Damenfrisuren. Unser erfahrenes Team verbindet traditionelle
                 Techniken mit modernem Styling-Know-how.
               </p>
               <p>
-                In unserem stilvollen Ambiente mit warmen Holztönen, eleganten Lederelementen 
-                und goldenen Akzenten erleben Sie Barbier-Kultur, wie sie sein sollte: 
+                In unserem stilvollen Ambiente mit warmen Holztönen, eleganten Lederelementen
+                und goldenen Akzenten erleben Sie Barbier-Kultur, wie sie sein sollte:
                 Persönlich. Professionell. Perfekt.
               </p>
               <p className="text-primary italic">
@@ -70,7 +71,7 @@ export function About() {
           <div className="relative">
             <div className="aspect-[4/5] rounded-lg overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1763669029167-fe7a6619219d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjbGFzc2ljJTIwYmFyYmVyc2hvcCUyMGludGVyaW9yfGVufDF8fHx8MTc2Njg2MTY2NXww&ixlib=rb-4.1.0&q=80&w=1080"
+                src={interiorImage}
                 alt="Schiersteiner Barbershop Interior"
                 className="w-full h-full object-cover"
               />
@@ -92,8 +93,8 @@ export function About() {
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                   <Icon className="text-primary" size={24} />
                 </div>
-                <h3 className="text-foreground mb-2">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <h3 className="text-foreground mb-2 select-none">{feature.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed select-none">
                   {feature.description}
                 </p>
               </Card>

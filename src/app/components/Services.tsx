@@ -51,7 +51,7 @@ export function Services({ onBookService }: ServicesProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center mb-4">
+          <div className="inline-flex items-center justify-center mb-4 select-none">
             <div className="h-px w-12 bg-primary/50"></div>
             <span className="px-4 text-primary uppercase tracking-widest text-sm">
               Unsere Leistungen
@@ -59,13 +59,13 @@ export function Services({ onBookService }: ServicesProps) {
             <div className="h-px w-12 bg-primary/50"></div>
           </div>
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl mb-4 text-foreground"
+            className="text-3xl sm:text-4xl md:text-5xl mb-4 text-foreground select-none"
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
             Services & Preise
           </h2>
-          <p className="text-foreground/70 max-w-2xl mx-auto">
-            Transparente Preise für erstklassige Dienstleistungen. 
+          <p className="text-foreground/70 max-w-2xl mx-auto select-none">
+            Transparente Preise für erstklassige Dienstleistungen.
             Wir bieten professionelles Handwerk für Damen und Herren.
           </p>
         </div>
@@ -73,10 +73,10 @@ export function Services({ onBookService }: ServicesProps) {
         {/* Services Tabs */}
         <Tabs defaultValue="gentlemen" className="w-full">
           <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-12">
-            <TabsTrigger value="gentlemen" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+            <TabsTrigger value="gentlemen" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground cursor-pointer transition-all duration-300 select-none">
               Gentlemen
             </TabsTrigger>
-            <TabsTrigger value="ladies" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+            <TabsTrigger value="ladies" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground cursor-pointer transition-all duration-300 select-none">
               Ladies
             </TabsTrigger>
           </TabsList>
@@ -105,7 +105,7 @@ export function Services({ onBookService }: ServicesProps) {
                   <Button
                     onClick={() => onBookService(service, 'gentlemen')}
                     variant="outline"
-                    className="w-full border-primary/30 text-primary hover:bg-primary/10"
+                    className="w-full border-primary/30 text-primary hover:bg-primary/10 select-none"
                     size="sm"
                   >
                     Buchen
@@ -139,7 +139,7 @@ export function Services({ onBookService }: ServicesProps) {
                   <Button
                     onClick={() => onBookService(service, 'ladies')}
                     variant="outline"
-                    className="w-full border-primary/30 text-primary hover:bg-primary/10"
+                    className="w-full border-primary/30 text-primary hover:bg-primary/10 select-none"
                     size="sm"
                   >
                     Buchen
@@ -152,7 +152,7 @@ export function Services({ onBookService }: ServicesProps) {
 
         {/* Note */}
         <div className="mt-12 text-center">
-          <Card className="inline-block bg-card/50 border-primary/30 px-8 py-4">
+          <Card className="inline-block bg-card/50 border-primary/30 px-8 py-4 select-none">
             <p className="text-sm text-muted-foreground">
               Alle Preise verstehen sich inklusive MwSt. • Terminvereinbarung empfohlen
             </p>

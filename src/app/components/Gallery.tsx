@@ -1,6 +1,7 @@
 import React from 'react';
 import brochureImage1 from '../../assets/1e01464787a768779876fb4210db9a88496bfd91.png';
 import brochureImage2 from '../../assets/e2f48518c0c58d618bbd067c7ecb2815aa8bbfd7.png';
+import interior2 from '../../assets/Interior_2.jpg';
 
 const galleryImages = [
   {
@@ -12,7 +13,7 @@ const galleryImages = [
     alt: 'Schiersteiner Barbershop Services',
   },
   {
-    url: 'https://images.unsplash.com/photo-1763669029167-fe7a6619219d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjbGFzc2ljJTIwYmFyYmVyc2hvcCUyMGludGVyaW9yfGVufDF8fHx8MTc2Njg2MTY2NXww&ixlib=rb-4.1.0&q=80&w=1080',
+    url: interior2,
     alt: 'Classic Barbershop Interior',
   },
   {
@@ -35,7 +36,7 @@ export function Gallery() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center mb-4">
+          <div className="inline-flex items-center justify-center mb-4 select-none">
             <div className="h-px w-12 bg-primary/50"></div>
             <span className="px-4 text-primary uppercase tracking-widest text-sm">
               Einblicke
@@ -43,13 +44,13 @@ export function Gallery() {
             <div className="h-px w-12 bg-primary/50"></div>
           </div>
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl mb-4 text-foreground"
+            className="text-3xl sm:text-4xl md:text-5xl mb-4 text-foreground select-none"
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
             Unsere Galerie
           </h2>
-          <p className="text-foreground/70 max-w-2xl mx-auto">
-            Entdecken Sie unser stilvolles Ambiente und unsere Arbeiten. 
+          <p className="text-foreground/70 max-w-2xl mx-auto select-none">
+            Entdecken Sie unser stilvolles Ambiente und unsere Arbeiten.
             Tradition trifft Moderne in jedem Detail.
           </p>
         </div>
@@ -73,16 +74,16 @@ export function Gallery() {
 
         {/* Instagram CTA */}
         <div className="mt-16 text-center">
-          <p className="text-foreground/70 mb-4">
+          <p className="text-foreground/70 mb-4 select-none">
             Folgen Sie uns für mehr Einblicke und Inspiration
           </p>
           <a
             href="https://instagram.com/Schiersteiner_Barbershop"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors"
+            className="inline-flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors cursor-pointer select-none"
           >
-            <span className="text-lg">@Schiersteiner_Barbershop</span>
+            <span>@Schiersteiner_Barbershop →</span>
           </a>
         </div>
       </div>

@@ -2,6 +2,10 @@ import React from 'react';
 import { Card } from './ui/card';
 import { Star } from 'lucide-react';
 
+interface ReviewsProps {
+  onBookNow?: () => void;
+}
+
 interface Review {
   id: string;
   name: string;
@@ -46,7 +50,7 @@ const reviews: Review[] = [
   },
 ];
 
-export function Reviews() {
+export function Reviews({ onBookNow }: ReviewsProps) {
   const averageRating = reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length;
 
   return (
@@ -127,15 +131,15 @@ export function Reviews() {
 
         {/* CTA */}
         <div className="mt-12 text-center">
-          <p className="text-foreground/70 mb-4">
+          <p className="text-foreground/70 mb-4 select-none">
             Überzeugen Sie sich selbst von unserer Qualität
           </p>
-          <a
-            href="#booking"
-            className="inline-flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors"
+          <button
+            onClick={onBookNow}
+            className="inline-flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors cursor-pointer select-none"
           >
             <span>Jetzt Termin buchen →</span>
-          </a>
+          </button>
         </div>
       </div>
     </section>

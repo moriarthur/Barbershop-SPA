@@ -48,7 +48,7 @@ export function Barbers() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center mb-4">
+          <div className="inline-flex items-center justify-center mb-4 select-none">
             <div className="h-px w-12 bg-primary/50"></div>
             <span className="px-4 text-primary uppercase tracking-widest text-sm">
               Unser Team
@@ -56,12 +56,12 @@ export function Barbers() {
             <div className="h-px w-12 bg-primary/50"></div>
           </div>
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl mb-4 text-foreground"
+            className="text-3xl sm:text-4xl md:text-5xl mb-4 text-foreground select-none"
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
             Unsere Barber
           </h2>
-          <p className="text-foreground/70 max-w-2xl mx-auto">
+          <p className="text-foreground/70 max-w-2xl mx-auto select-none">
             Erfahrene Profis mit Leidenschaft für perfekte Schnitte und individuelle Beratung.
           </p>
         </div>
@@ -81,9 +81,9 @@ export function Barbers() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent"></div>
-                
+
                 {/* Role Badge */}
-                <div className="absolute top-4 right-4 bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-sm backdrop-blur-sm">
+                <div className="absolute top-4 right-4 bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-sm backdrop-blur-sm select-none">
                   {barber.role}
                 </div>
               </div>
@@ -96,8 +96,8 @@ export function Barbers() {
                 >
                   {barber.name}
                 </h3>
-                
-                <div className="flex items-center space-x-2 text-primary text-sm mb-3">
+
+                <div className="flex items-center space-x-2 text-primary text-sm mb-3 select-none">
                   <Star size={14} fill="currentColor" />
                   <span>{barber.experience}</span>
                 </div>
@@ -106,7 +106,7 @@ export function Barbers() {
                   <span className="text-sm text-primary/80">{barber.specialization}</span>
                 </div>
 
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed select-none">
                   {barber.description}
                 </p>
               </div>
@@ -116,10 +116,10 @@ export function Barbers() {
 
         {/* Team Message */}
         <div className="mt-16 text-center">
-          <Card className="inline-block bg-card/50 border-primary/30 px-8 py-6 max-w-3xl">
+          <Card className="inline-block bg-card/50 border-primary/30 px-8 py-6 max-w-3xl select-none">
             <p className="text-foreground/80 leading-relaxed">
-              Unser Team kombiniert traditionelles Handwerk mit modernem Know-how. 
-              Jeder Barber bringt seine einzigartigen Fähigkeiten und Erfahrungen ein, 
+              Unser Team kombiniert traditionelles Handwerk mit modernem Know-how.
+              Jeder Barber bringt seine einzigartigen Fähigkeiten und Erfahrungen ein,
               um Ihnen den perfekten Look zu verleihen.
             </p>
           </Card>

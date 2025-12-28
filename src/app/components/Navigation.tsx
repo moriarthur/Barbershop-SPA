@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from './ui/button';
+import logo from '../../assets/logo.png';
 
 interface NavigationProps {
   onNavigate: (section: string) => void;
@@ -30,15 +31,13 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
           {/* Logo */}
           <button
             onClick={() => handleNavigate('home')}
-            className="flex items-center space-x-3 group"
+            className="flex items-center space-x-3 group cursor-pointer hover:opacity-80 transition-opacity"
           >
-            <div className="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center bg-primary/10 group-hover:bg-primary/20 transition-colors">
-              <span className="text-primary font-serif" style={{ fontFamily: 'Playfair Display, serif' }}>SB</span>
-            </div>
-            <div className="hidden sm:block">
-              <div className="text-primary uppercase tracking-wider" style={{ fontSize: '0.75rem', fontFamily: 'Playfair Display, serif' }}>Schiersteiner</div>
-              <div className="text-foreground" style={{ fontSize: '0.875rem', fontFamily: 'Playfair Display, serif' }}>Barbershop</div>
-            </div>
+            <img
+              src={logo}
+              alt="Schiersteiner Barbershop Logo"
+              className="h-12 w-auto"
+            />
           </button>
 
           {/* Desktop Navigation */}
@@ -47,7 +46,7 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
               <button
                 key={item.id}
                 onClick={() => handleNavigate(item.id)}
-                className={`transition-colors ${
+                className={`transition-colors cursor-pointer select-none ${
                   currentSection === item.id
                     ? 'text-primary'
                     : 'text-foreground/80 hover:text-primary'
@@ -58,7 +57,7 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
             ))}
             <Button
               onClick={() => handleNavigate('booking')}
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer select-none"
             >
               Termin buchen
             </Button>
@@ -67,7 +66,7 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-foreground p-2"
+            className="md:hidden text-foreground p-2 select-none"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -80,7 +79,7 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
               <button
                 key={item.id}
                 onClick={() => handleNavigate(item.id)}
-                className={`block w-full text-left py-2 transition-colors ${
+                className={`block w-full text-left py-2 transition-colors select-none ${
                   currentSection === item.id
                     ? 'text-primary'
                     : 'text-foreground/80'
@@ -91,7 +90,7 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
             ))}
             <Button
               onClick={() => handleNavigate('booking')}
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 select-none"
             >
               Termin buchen
             </Button>

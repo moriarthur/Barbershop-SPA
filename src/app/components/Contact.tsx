@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card } from './ui/card';
 import { MapPin, Phone, Clock, Instagram, Facebook } from 'lucide-react';
-import { Button } from './ui/button';
 
 export function Contact() {
   return (
@@ -9,7 +8,7 @@ export function Contact() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center mb-4">
+          <div className="inline-flex items-center justify-center mb-4 select-none">
             <div className="h-px w-12 bg-primary/50"></div>
             <span className="px-4 text-primary uppercase tracking-widest text-sm">
               Besuchen Sie uns
@@ -17,12 +16,12 @@ export function Contact() {
             <div className="h-px w-12 bg-primary/50"></div>
           </div>
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl mb-4 text-foreground"
+            className="text-3xl sm:text-4xl md:text-5xl mb-4 text-foreground select-none"
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
             Kontakt & Standort
           </h2>
-          <p className="text-foreground/70 max-w-2xl mx-auto">
+          <p className="text-foreground/70 max-w-2xl mx-auto select-none">
             Besuchen Sie uns in Wiesbaden-Schierstein. Wir freuen uns auf Sie!
           </p>
         </div>
@@ -36,7 +35,7 @@ export function Contact() {
                   <MapPin className="text-primary" size={20} />
                 </div>
                 <div>
-                  <h3 className="text-foreground mb-2">Adresse</h3>
+                  <h3 className="text-foreground mb-2 select-none">Adresse</h3>
                   <p className="text-foreground/70">
                     Reichsapfelstraße 12<br />
                     65201 Wiesbaden
@@ -45,7 +44,7 @@ export function Contact() {
                     href="https://maps.google.com/?q=Reichsapfelstraße+12,+65201+Wiesbaden"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/80 text-sm mt-2 inline-block"
+                    className="text-primary hover:text-primary/80 text-sm mt-2 inline-block select-none"
                   >
                     Route anzeigen →
                   </a>
@@ -59,14 +58,14 @@ export function Contact() {
                   <Phone className="text-primary" size={20} />
                 </div>
                 <div>
-                  <h3 className="text-foreground mb-2">Telefon</h3>
+                  <h3 className="text-foreground mb-2 select-none">Telefon</h3>
                   <a
                     href="tel:061120779"
                     className="text-primary hover:text-primary/80 text-lg"
                   >
                     0611 - 20 779
                   </a>
-                  <p className="text-foreground/70 text-sm mt-2">
+                  <p className="text-foreground/70 text-sm mt-2 select-none">
                     Rufen Sie uns an für eine Terminvereinbarung
                   </p>
                 </div>
@@ -79,7 +78,7 @@ export function Contact() {
                   <Clock className="text-primary" size={20} />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-foreground mb-3">Öffnungszeiten</h3>
+                  <h3 className="text-foreground mb-3 select-none">Öffnungszeiten</h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-foreground/70">Montag - Samstag</span>
@@ -90,7 +89,7 @@ export function Contact() {
                       <span className="text-muted-foreground">Geschlossen</span>
                     </div>
                   </div>
-                  <p className="text-primary text-sm mt-3">
+                  <p className="text-primary text-sm mt-3 select-none">
                     Ohne Termin möglich – Termine bevorzugt
                   </p>
                 </div>
@@ -99,7 +98,7 @@ export function Contact() {
 
             {/* Social Media */}
             <Card className="bg-card border-border p-6">
-              <h3 className="text-foreground mb-4">Folgen Sie uns</h3>
+              <h3 className="text-foreground mb-4 select-none">Folgen Sie uns</h3>
               <div className="flex space-x-4">
                 <a
                   href="https://instagram.com/Schiersteiner_Barbershop"
@@ -110,7 +109,7 @@ export function Contact() {
                   <Instagram className="text-primary" size={20} />
                 </a>
                 <a
-                  href="https://facebook.com/Schiersteiner_Barbershop"
+                  href="https://www.facebook.com/people/Schiersteiner-Barbershop/pfbid025iAjKc2YozoKGvXb3ui2SJzdeDXnNzNhJT8qDzS4BbCkjWKZCJSu7ErNcdJaJPn8l/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
@@ -138,7 +137,7 @@ export function Contact() {
 
         {/* Parking Info */}
         <div className="text-center">
-          <Card className="inline-block bg-card/50 border-primary/30 px-8 py-4">
+          <Card className="inline-block bg-card/50 border-primary/30 px-8 py-4 select-none">
             <p className="text-sm text-muted-foreground">
               Parkplätze direkt vor dem Salon verfügbar
             </p>
