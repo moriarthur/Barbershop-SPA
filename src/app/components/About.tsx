@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from './ui/card';
 import { Award, Heart, Users, Clock } from 'lucide-react';
-import interiorImage from '../../assets/Interior_2.jpg';
+import interiorImage from '../../assets/Interior_2.webp';
 
 export function About() {
   const features = [

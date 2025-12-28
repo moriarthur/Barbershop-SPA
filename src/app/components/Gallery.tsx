@@ -1,17 +1,7 @@
 import React from 'react';
-import brochureImage1 from '../../assets/1e01464787a768779876fb4210db9a88496bfd91.png';
-import brochureImage2 from '../../assets/e2f48518c0c58d618bbd067c7ecb2815aa8bbfd7.png';
-import interior2 from '../../assets/Interior_2.jpg';
+import interior2 from '../../assets/Interior_2.webp';
 
 const galleryImages = [
-  {
-    url: brochureImage1,
-    alt: 'Schiersteiner Barbershop Interior',
-  },
-  {
-    url: brochureImage2,
-    alt: 'Schiersteiner Barbershop Services',
-  },
   {
     url: interior2,
     alt: 'Classic Barbershop Interior',
