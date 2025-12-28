@@ -1,7 +1,7 @@
 
   # Schiersteiner Barbershop - Mobile SPA
 
-  Eine Mobile-First Single Page Application für Schiersteiner Barbershop in Wiesbaden-Schierstein.
+  A Mobile-First Single Page Application for Schiersteiner Barbershop in Wiesbaden-Schierstein.
 
   ## Running the code
 

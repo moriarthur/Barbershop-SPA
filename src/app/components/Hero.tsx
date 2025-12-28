@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
-import interiorImage from '../../assets/Interior_3.png';
+import interiorImage from '../../assets/interior_3.png';
 import logo2 from '../../assets/logo_2.png';
 
 interface HeroProps {
