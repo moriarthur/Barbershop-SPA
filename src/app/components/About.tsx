@@ -28,7 +28,7 @@ export function About() {
   ];
 
   return (
-    <section className="py-20 bg-secondary/30">
+    <section id="about" className="py-20 bg-secondary/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
           {/* Text Content */}
@@ -93,8 +93,8 @@ export function About() {
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                   <Icon className="text-primary" size={24} />
                 </div>
-                <h3 className="text-foreground mb-2 select-none">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed select-none">
+                <h3 className="text-foreground mb-2">{feature.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {feature.description}
                 </p>
               </Card>

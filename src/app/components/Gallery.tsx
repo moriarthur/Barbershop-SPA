@@ -1,22 +1,50 @@
 import React from 'react';
 import interior2 from '../../assets/Interior_2.webp';
+import interior from '../../assets/gallery/interior.webp';
+import cutting from '../../assets/gallery/cutting.webp';
+import beard from '../../assets/gallery/beard.webp';
+import fade from '../../assets/gallery/fade.webp';
+import storefront from '../../assets/gallery/storefront.webp';
+import shave from '../../assets/gallery/shave.webp';
+import scissors from '../../assets/gallery/scissors.webp';
+import chair from '../../assets/gallery/chair.webp';
 
 const galleryImages = [
   {
     url: interior2,
-    alt: 'Classic Barbershop Interior',
+    alt: 'Barbershop Interior',
   },
   {
-    url: 'https://images.unsplash.com/photo-1547648946-2b1fd7eab923?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYXJiZXIlMjBjdXR0aW5nJTIwaGFpcnxlbnwxfHx8fDE3NjY4NDE4NDh8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    alt: 'Barber Cutting Hair',
+    url: interior,
+    alt: 'Klassisches Barbershop Ambiente',
   },
   {
-    url: 'https://images.unsplash.com/photo-1706765779515-40038dafd7c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYXJiZXJzaG9wJTIwdG9vbHMlMjB2aW50YWdlfGVufDF8fHx8MTc2Njg2MTY2NXww&ixlib=rb-4.1.0&q=80&w=1080',
-    alt: 'Barbershop Tools',
+    url: storefront,
+    alt: 'Barbershop Fassade',
   },
   {
-    url: 'https://images.unsplash.com/photo-1747832512459-5566e6d0ee5a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBiYXJiZXIlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjY3ODk4OTR8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    alt: 'Professional Barber',
+    url: scissors,
+    alt: 'Haarschneideschere',
+  },
+  {
+    url: cutting,
+    alt: 'Haarschnitt bei der Arbeit',
+  },
+  {
+    url: beard,
+    alt: 'Bartpflege und Styling',
+  },
+  {
+    url: shave,
+    alt: 'Traditionelle Nassrasur',
+  },
+  {
+    url: fade,
+    alt: 'Modernes Fade Ergebnis',
+  },
+  {
+    url: chair,
+    alt: 'Barberstuhl',
   },
 ];
 
@@ -34,12 +62,12 @@ export function Gallery() {
             <div className="h-px w-12 bg-primary/50"></div>
           </div>
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl mb-4 text-foreground select-none"
+            className="text-3xl sm:text-4xl md:text-5xl mb-4 text-foreground"
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
             Unsere Galerie
           </h2>
-          <p className="text-foreground/70 max-w-2xl mx-auto select-none">
+          <p className="text-foreground/70 max-w-2xl mx-auto">
             Entdecken Sie unser stilvolles Ambiente und unsere Arbeiten.
             Tradition trifft Moderne in jedem Detail.
           </p>
@@ -55,6 +83,7 @@ export function Gallery() {
               <img
                 src={image.url}
                 alt={image.alt}
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -64,14 +93,14 @@ export function Gallery() {
 
         {/* Instagram CTA */}
         <div className="mt-16 text-center">
-          <p className="text-foreground/70 mb-4 select-none">
+          <p className="text-foreground/70 mb-4">
             Folgen Sie uns für mehr Einblicke und Inspiration
           </p>
           <a
             href="https://instagram.com/Schiersteiner_Barbershop"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors cursor-pointer select-none"
+            className="inline-flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors cursor-pointer"
           >
             <span>@Schiersteiner_Barbershop →</span>
           </a>

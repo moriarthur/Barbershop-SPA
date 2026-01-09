@@ -94,29 +94,37 @@ export default function App() {
   useEffect(() => {
     if (isBookingOpen) return;
 
+    let ticking = false;
+
     const handleScroll = () => {
-      const sections = ['home', 'services', 'barbers', 'gallery', 'contact'];
-      
-      for (const section of sections) {
-        if (section === 'home') {
-          if (window.scrollY < 300) {
-            setCurrentSection('home');
-            return;
-          }
-        } else {
-          const element = document.getElementById(section);
-          if (element) {
-            const rect = element.getBoundingClientRect();
-            if (rect.top <= 150 && rect.bottom >= 150) {
-              setCurrentSection(section);
-              return;
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const sections = ['home', 'about', 'services', 'barbers', 'gallery', 'contact'];
+          const navOffset = 100; // Account for fixed navigation
+          const scrollPosition = window.scrollY + navOffset;
+
+          // Find which section we're currently in
+          let activeSection = 'home';
+
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const element = document.getElementById(sections[i]);
+            if (element) {
+              const sectionTop = element.offsetTop;
+              if (scrollPosition >= sectionTop) {
+                activeSection = sections[i];
+                break;
+              }
             }
           }
-        }
+
+          setCurrentSection(activeSection);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isBookingOpen]);
 

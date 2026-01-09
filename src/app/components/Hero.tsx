@@ -1,36 +1,33 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button } from './ui/button';
 import interiorImage from '../../assets/Interior_3.webp';
-import logo2 from '../../assets/logo_2.png';
+import logo2 from '../../assets/logo_2.webp';
+import { useScroll } from '../hooks/useScroll';
 
 interface HeroProps {
   onBookNow: () => void;
 }
 
 export function Hero({ onBookNow }: HeroProps) {
-  const [scrollY, setScrollY] = useState(0);
   const bgRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    if (bgRef.current) {
+      bgRef.current.style.transform = `translateY(${scrollY * 0.3}px)`;
+    }
+  }, [scrollY]);
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div
         ref={bgRef}
-        className="absolute inset-0 z-0 hidden md:block"
-        style={{ transform: `translateY(${scrollY * 0.5}px)` }}
+        className="absolute inset-0 z-0 hidden md:block will-change-transform"
       >
         <img
           src={interiorImage}
-          alt="Interior_3"
+          alt="Schiersteiner Barbershop elegant interior with vintage decor and warm ambiance"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background"></div>
@@ -39,7 +36,7 @@ export function Hero({ onBookNow }: HeroProps) {
       <div className="absolute inset-0 z-0 md:hidden">
         <img
           src={interiorImage}
-          alt="Interior_3"
+          alt="Schiersteiner Barbershop elegant interior with vintage decor and warm ambiance"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background"></div>
@@ -50,7 +47,7 @@ export function Hero({ onBookNow }: HeroProps) {
         <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
           {/* Main Heading */}
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground select-none leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight"
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
             Schiersteiner{' '}
@@ -58,12 +55,12 @@ export function Hero({ onBookNow }: HeroProps) {
           </h1>
 
           {/* Tagline */}
-          <p className="text-lg sm:text-xl md:text-2xl text-primary/90 select-none" style={{ fontFamily: 'Playfair Display, serif' }}>
+          <p className="text-lg sm:text-xl md:text-2xl text-primary/90" style={{ fontFamily: 'Playfair Display, serif' }}>
             For Ladies & Gentlemen
           </p>
 
           {/* Description */}
-          <p className="text-sm sm:text-base text-foreground/80 max-w-2xl mx-auto leading-relaxed select-none">
+          <p className="text-sm sm:text-base text-foreground/80 max-w-2xl mx-auto leading-relaxed">
             Erleben Sie klassisches Barbier-Handwerk in stilvollem Ambiente.
             Tradition trifft auf moderne Perfektion.
           </p>
@@ -90,7 +87,7 @@ export function Hero({ onBookNow }: HeroProps) {
 
           {/* Hours Badge */}
           <div>
-            <div className="inline-flex flex-col items-center justify-center px-6 py-3 sm:px-8 sm:py-4 bg-card/90 backdrop-blur-md border border-border/50 rounded-xl select-none shadow-lg">
+            <div className="inline-flex flex-col items-center justify-center px-6 py-3 sm:px-8 sm:py-4 bg-card/90 backdrop-blur-md border border-border/50 rounded-xl shadow-lg">
               <div className="text-primary uppercase tracking-wider text-[10px] sm:text-xs mb-1">
                 Öffnungszeiten
               </div>

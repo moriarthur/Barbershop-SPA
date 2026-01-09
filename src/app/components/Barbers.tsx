@@ -1,6 +1,9 @@
 import React from 'react';
 import { Card } from './ui/card';
 import { Star } from 'lucide-react';
+import marco from '../../assets/barbers/marco.webp';
+import anna from '../../assets/barbers/anna.webp';
+import thomas from '../../assets/barbers/thomas.webp';
 
 interface Barber {
   id: string;
@@ -17,7 +20,7 @@ const barbers: Barber[] = [
     id: '1',
     name: 'Marco Weber',
     role: 'Master Barber',
-    image: 'https://images.unsplash.com/photo-1747832512459-5566e6d0ee5a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBiYXJiZXIlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjY3ODk4OTR8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: marco,
     experience: '15+ Jahre Erfahrung',
     specialization: 'Klassische Herrenschnitte & Bartpflege',
     description: 'Spezialist für traditionelle Barbier-Kunst und moderne Herrenfrisuren. Perfektionist in der Rasur.',
@@ -26,7 +29,7 @@ const barbers: Barber[] = [
     id: '2',
     name: 'Anna Schmidt',
     role: 'Senior Stylist',
-    image: 'https://images.unsplash.com/photo-1547648946-2b1fd7eab923?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYXJiZXIlMjBjdXR0aW5nJTIwaGFpcnxlbnwxfHx8fDE3NjY4NDE4NDh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: anna,
     experience: '12+ Jahre Erfahrung',
     specialization: 'Damenfrisuren & Colorationen',
     description: 'Expertin für Colorationen, Balayage und kreative Damenschnitte. Individuelle Beratung.',
@@ -35,7 +38,7 @@ const barbers: Barber[] = [
     id: '3',
     name: 'Thomas Müller',
     role: 'Barber & Stylist',
-    image: 'https://images.unsplash.com/photo-1547648946-2b1fd7eab923?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYXJiZXIlMjBjdXR0aW5nJTIwaGFpcnxlbnwxfHx8fDE3NjY4NDE4NDh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: thomas,
     experience: '8+ Jahre Erfahrung',
     specialization: 'Moderne Styles & Trends',
     description: 'Junger Profi mit Gespür für aktuelle Trends. Spezialisiert auf moderne Fades und Texturschnitte.',
@@ -78,12 +81,12 @@ export function Barbers() {
                 <img
                   src={barber.image}
                   alt={barber.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent"></div>
 
                 {/* Role Badge */}
-                <div className="absolute top-4 right-4 bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-sm backdrop-blur-sm select-none">
+                <div className="absolute top-4 right-4 bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-sm backdrop-blur-sm">
                   {barber.role}
                 </div>
               </div>
@@ -97,7 +100,7 @@ export function Barbers() {
                   {barber.name}
                 </h3>
 
-                <div className="flex items-center space-x-2 text-primary text-sm mb-3 select-none">
+                <div className="flex items-center space-x-2 text-primary text-sm mb-3">
                   <Star size={14} fill="currentColor" />
                   <span>{barber.experience}</span>
                 </div>
@@ -106,7 +109,7 @@ export function Barbers() {
                   <span className="text-sm text-primary/80">{barber.specialization}</span>
                 </div>
 
-                <p className="text-sm text-muted-foreground leading-relaxed select-none">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {barber.description}
                 </p>
               </div>
@@ -116,8 +119,8 @@ export function Barbers() {
 
         {/* Team Message */}
         <div className="mt-16 text-center">
-          <Card className="inline-block bg-card/50 border-primary/30 px-8 py-6 max-w-3xl select-none">
-            <p className="text-foreground/80 leading-relaxed">
+          <Card className="inline-block bg-card/50 border-primary/30 px-8 py-4 max-w-3xl select-none">
+            <p className="text-sm text-muted-foreground">
               Unser Team kombiniert traditionelles Handwerk mit modernem Know-how.
               Jeder Barber bringt seine einzigartigen Fähigkeiten und Erfahrungen ein,
               um Ihnen den perfekten Look zu verleihen.

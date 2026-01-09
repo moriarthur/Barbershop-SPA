@@ -8,6 +8,10 @@ import { Check, ArrowLeft, Clock, AlertCircle } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { format, addDays, setHours, setMinutes } from 'date-fns';
 import { de } from 'date-fns/locale';
+import marco from '../../assets/barbers/marco.webp';
+import anna from '../../assets/barbers/anna.webp';
+import thomas from '../../assets/barbers/thomas.webp';
+import anyBarber from '../../assets/barbers/any.webp';
 
 interface Barber {
   id: string;
@@ -34,25 +38,25 @@ const barbers: Barber[] = [
   {
     id: 'any',
     name: 'Beliebiger Friseur',
-    image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYXJiZXIlMjBzaG9wfGVufDF8fHx8MTc2Njc5OTI3Nnww&ixlib=rb-4.1.0&q=80&w=1080',
+    image: anyBarber,
     specialization: 'Keine Präferenz - Wir weisen Ihnen den besten verfügbaren Friseur zu',
   },
   {
     id: '1',
     name: 'Marco Weber',
-    image: 'https://images.unsplash.com/photo-1747832512459-5566e6d0ee5a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBiYXJiZXIlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjY3ODk4OTR8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: marco,
     specialization: 'Klassische Herrenschnitte & Bartpflege',
   },
   {
     id: '2',
     name: 'Anna Schmidt',
-    image: 'https://images.unsplash.com/photo-1547648946-2b1fd7eab923?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYXJiZXIlMjBjdXR0aW5nJTIwaGFpcnxlbnwxfHx8fDE3NjY4NDE4NDh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: anna,
     specialization: 'Damenfrisuren & Colorationen',
   },
   {
     id: '3',
     name: 'Thomas Müller',
-    image: 'https://images.unsplash.com/photo-1547648946-2b1fd7eab923?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYXJiZXIlMjBjdXR0aW5nJTIwaGFpcnxlbnwxfHx8fDE3NjY4NDE4NDh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: thomas,
     specialization: 'Moderne Styles & Trends',
   },
 ];
@@ -226,36 +230,36 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
               <Check className="w-8 h-8 text-primary" />
             </div>
             <h2
-              className="text-2xl sm:text-3xl text-foreground mb-4 select-none"
+              className="text-2xl sm:text-3xl text-foreground mb-4"
               style={{ fontFamily: 'Playfair Display, serif' }}
             >
               Buchung erfolgreich!
             </h2>
-            <p className="text-muted-foreground mb-6 select-none">
+            <p className="text-muted-foreground mb-6">
               Ihre Buchung wurde erfolgreich übermittelt. Sie erhalten eine Bestätigungsmail an {customerEmail}.
             </p>
             <div className="bg-secondary/50 border border-border rounded-lg p-6 mb-6 text-left">
               <div className="space-y-3">
                 <div>
-                  <div className="text-sm text-muted-foreground select-none">Service</div>
+                  <div className="text-sm text-muted-foreground">Service</div>
                   <div className="text-foreground">{selectedService?.name}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground select-none">Barber</div>
+                  <div className="text-sm text-muted-foreground">Barber</div>
                   <div className="text-foreground">{selectedBarber?.name}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground select-none">Datum & Uhrzeit</div>
+                  <div className="text-sm text-muted-foreground">Datum & Uhrzeit</div>
                   <div className="text-foreground">
                     {selectedDate && format(selectedDate, 'PPP', { locale: de })} um {selectedTime}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground select-none">Dauer</div>
+                  <div className="text-sm text-muted-foreground">Dauer</div>
                   <div className="text-foreground">{selectedService?.duration}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground select-none">Preis</div>
+                  <div className="text-sm text-muted-foreground">Preis</div>
                   <div className="text-primary">{selectedService?.price}</div>
                 </div>
               </div>
@@ -282,12 +286,12 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
             )}
             <div>
               <h1
-                className="text-2xl sm:text-3xl text-foreground select-none"
+                className="text-2xl sm:text-3xl text-foreground"
                 style={{ fontFamily: 'Playfair Display, serif' }}
               >
                 Termin buchen
               </h1>
-              <p className="text-muted-foreground select-none">
+              <p className="text-muted-foreground">
                 Schritt {step} von 4
               </p>
             </div>
@@ -314,7 +318,7 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
         {/* Step 1: Select Service */}
         {step === 1 && (
           <div>
-            <h2 className="text-xl mb-6 text-foreground select-none">Wählen Sie eine Dienstleistung</h2>
+            <h2 className="text-xl mb-6 text-foreground">Wählen Sie eine Dienstleistung</h2>
             <Tabs defaultValue="gentlemen">
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="gentlemen" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground cursor-pointer transition-all duration-300">
@@ -335,10 +339,10 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
                       <h3 className="text-foreground mb-2">{service.name}</h3>
                       <div className="flex justify-between items-center">
                         <span className="text-primary">{service.price}</span>
-                        <span className="text-sm text-muted-foreground select-none">{service.duration}</span>
+                        <span className="text-sm text-muted-foreground">{service.duration}</span>
                       </div>
                       {service.description && (
-                        <p className="text-sm text-muted-foreground mt-2 select-none">{service.description}</p>
+                        <p className="text-sm text-muted-foreground mt-2">{service.description}</p>
                       )}
                     </Card>
                   ))}
@@ -355,10 +359,10 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
                       <h3 className="text-foreground mb-2">{service.name}</h3>
                       <div className="flex justify-between items-center">
                         <span className="text-primary">{service.price}</span>
-                        <span className="text-sm text-muted-foreground select-none">{service.duration}</span>
+                        <span className="text-sm text-muted-foreground">{service.duration}</span>
                       </div>
                       {service.description && (
-                        <p className="text-sm text-muted-foreground mt-2 select-none">{service.description}</p>
+                        <p className="text-sm text-muted-foreground mt-2">{service.description}</p>
                       )}
                     </Card>
                   ))}
@@ -371,7 +375,7 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
         {/* Step 2: Select Barber */}
         {step === 2 && (
           <div>
-            <h2 className="text-xl mb-6 text-foreground select-none">Wählen Sie Ihren Barber</h2>
+            <h2 className="text-xl mb-6 text-foreground">Wählen Sie Ihren Barber</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {barbers.map((barber) => (
                 <Card
@@ -381,12 +385,12 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
                 >
                   <img
                     src={barber.image}
-                    alt={barber.name}
-                    className="w-full h-48 object-cover"
+                    alt={`${barber.name} - ${barber.role} at Schiersteiner Barbershop`}
+                    className="w-full h-64 object-cover object-top"
                   />
-                  <div className="p-4">
-                    <h3 className="text-foreground mb-1">{barber.name}</h3>
-                    <p className="text-sm text-muted-foreground">{barber.specialization}</p>
+                  <div className="p-3">
+                    <h3 className="text-base text-foreground mb-1">{barber.name}</h3>
+                    <p className="text-xs text-muted-foreground line-clamp-2">{barber.specialization}</p>
                   </div>
                 </Card>
               ))}
@@ -397,11 +401,11 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
         {/* Step 3: Select Date & Time */}
         {step === 3 && (
           <div>
-            <h2 className="text-xl mb-6 text-foreground select-none">Wählen Sie Datum und Uhrzeit</h2>
+            <h2 className="text-xl mb-6 text-foreground">Wählen Sie Datum und Uhrzeit</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Calendar */}
               <Card className="bg-card border-border p-6">
-                <h3 className="text-foreground mb-4 select-none">Datum wählen</h3>
+                <h3 className="text-foreground mb-4">Datum wählen</h3>
                 <Calendar
                   mode="single"
                   selected={selectedDate}
@@ -414,18 +418,13 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
               {/* Time Slots */}
               <div>
                 <Card className="bg-card border-border p-6">
-                  <h3 className="text-foreground mb-4 select-none">Uhrzeit wählen</h3>
+                  <h3 className="text-foreground mb-4">Uhrzeit wählen</h3>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-96 overflow-y-auto">
                     {timeSlots.map((time) => (
                       <Button
                         key={time}
                         onClick={() => handleTimeSelect(time)}
                         variant={selectedTime === time ? 'default' : 'outline'}
-                        className={
-                          selectedTime === time
-                            ? 'bg-primary text-primary-foreground select-none'
-                            : 'border-border hover:border-primary select-none'
-                        }
                         size="sm"
                       >
                         {time}
@@ -441,7 +440,7 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
         {/* Step 4: Customer Details */}
         {step === 4 && (
           <div>
-            <h2 className="text-xl mb-6 text-foreground select-none">Ihre Kontaktdaten</h2>
+            <h2 className="text-xl mb-6 text-foreground">Ihre Kontaktdaten</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Form */}
               <Card className="bg-card border-border p-6">
@@ -519,7 +518,7 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
                         <button
                           type="button"
                           onClick={() => onOpenLegal?.('datenschutz')}
-                          className="text-primary hover:underline inline select-none"
+                          className="text-primary hover:underline inline"
                         >
                           Datenschutzbestimmungen
                         </button>{' '}
@@ -547,18 +546,18 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
 
               {/* Summary */}
               <Card className="bg-secondary/50 border-border p-6">
-                <h3 className="text-foreground mb-4 select-none">Zusammenfassung</h3>
+                <h3 className="text-foreground mb-4">Zusammenfassung</h3>
                 <div className="space-y-4">
                   <div>
-                    <div className="text-sm text-muted-foreground select-none">Service</div>
+                    <div className="text-sm text-muted-foreground">Service</div>
                     <div className="text-foreground">{selectedService?.name}</div>
                   </div>
                   <div>
-                    <div className="text-sm text-muted-foreground select-none">Barber</div>
+                    <div className="text-sm text-muted-foreground">Barber</div>
                     <div className="text-foreground">{selectedBarber?.name}</div>
                   </div>
                   <div>
-                    <div className="text-sm text-muted-foreground select-none">Datum & Uhrzeit</div>
+                    <div className="text-sm text-muted-foreground">Datum & Uhrzeit</div>
                     <div className="text-foreground">
                       {selectedDate && format(selectedDate, 'PPP', { locale: de })} um {selectedTime}
                     </div>
@@ -569,7 +568,7 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
                   </div>
                   <div className="pt-4 border-t border-border">
                     <div className="flex justify-between items-center">
-                      <span className="text-foreground select-none">Preis</span>
+                      <span className="text-foreground">Preis</span>
                       <span className="text-primary text-xl">{selectedService?.price}</span>
                     </div>
                   </div>

@@ -131,7 +131,7 @@ export function Reviews({ onBookNow }: ReviewsProps) {
 
         {/* CTA */}
         <div className="mt-12 text-center">
-          <p className="text-foreground/70 mb-4 select-none">
+          <p className="text-foreground/70 mb-4">
             Überzeugen Sie sich selbst von unserer Qualität
           </p>
           <button

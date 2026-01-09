@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from './ui/button';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logo.webp';
 
 interface NavigationProps {
   onNavigate: (section: string) => void;
@@ -10,9 +10,13 @@ interface NavigationProps {
 
 export function Navigation({ onNavigate, currentSection }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const firstMenuItemRef = useRef<HTMLButtonElement>(null);
 
   const navItems = [
     { id: 'home', label: 'Home' },
+    { id: 'about', label: 'Über uns' },
     { id: 'services', label: 'Leistungen' },
     { id: 'barbers', label: 'Unser Team' },
     { id: 'gallery', label: 'Galerie' },
@@ -22,7 +26,58 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
   const handleNavigate = (section: string) => {
     onNavigate(section);
     setIsOpen(false);
+    // Return focus to menu button after closing
+    setTimeout(() => menuButtonRef.current?.focus(), 100);
   };
+
+  const toggleMenu = () => {
+    const newIsOpen = !isOpen;
+    setIsOpen(newIsOpen);
+    // Focus first menu item when opening
+    if (newIsOpen) {
+      setTimeout(() => firstMenuItemRef.current?.focus(), 100);
+    }
+  };
+
+  // Handle escape key to close menu
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+        setTimeout(() => menuButtonRef.current?.focus(), 100);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+      // Trap focus within mobile menu
+      const focusableElements = mobileMenuRef.current?.querySelectorAll(
+        'button, a[href], input, select, textarea'
+      );
+      const firstElement = focusableElements?.[0] as HTMLElement;
+      const lastElement = focusableElements?.[
+        focusableElements.length - 1
+      ] as HTMLElement;
+
+      const handleTab = (e: KeyboardEvent) => {
+        if (e.key === 'Tab') {
+          if (e.shiftKey && document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement?.focus();
+          } else if (!e.shiftKey && document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement?.focus();
+          }
+        }
+      };
+
+      document.addEventListener('keydown', handleTab);
+      return () => {
+        document.removeEventListener('keydown', handleEscape);
+        document.removeEventListener('keydown', handleTab);
+      };
+    }
+  }, [isOpen]);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
@@ -32,6 +87,7 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
           <button
             onClick={() => handleNavigate('home')}
             className="flex items-center space-x-3 group cursor-pointer hover:opacity-80 transition-opacity"
+            aria-label="Zur Startseite"
           >
             <img
               src={logo}
@@ -51,6 +107,8 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
                     ? 'text-primary'
                     : 'text-foreground/80 hover:text-primary'
                 }`}
+                aria-label={`Navigiere zu ${item.label}`}
+                aria-current={currentSection === item.id ? 'page' : undefined}
               >
                 {item.label}
               </button>
@@ -65,25 +123,41 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-foreground p-2 select-none"
+            ref={menuButtonRef}
+            onClick={toggleMenu}
+            className="md:hidden p-2 select-none rounded-lg hover:bg-primary/10 active:bg-primary/20 transition-colors"
+            aria-label={isOpen ? 'Menü schließen' : 'Menü öffnen'}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            aria-haspopup="true"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            <div className={isOpen ? 'text-primary' : 'text-foreground'}>
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </div>
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden py-4 space-y-4 border-t border-border">
-            {navItems.map((item) => (
+          <div
+            ref={mobileMenuRef}
+            id="mobile-menu"
+            className="md:hidden py-4 space-y-4 border-t border-border"
+            role="menu"
+            aria-label="Hauptnavigation"
+          >
+            {navItems.map((item, index) => (
               <button
                 key={item.id}
+                ref={index === 0 ? firstMenuItemRef : undefined}
                 onClick={() => handleNavigate(item.id)}
                 className={`block w-full text-left py-2 transition-colors select-none ${
                   currentSection === item.id
                     ? 'text-primary'
                     : 'text-foreground/80'
                 }`}
+                role="menuitem"
+                aria-label={`Navigiere zu ${item.label}`}
               >
                 {item.label}
               </button>
@@ -91,12 +165,14 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
             <Button
               onClick={() => handleNavigate('booking')}
               className="w-full bg-primary text-primary-foreground hover:bg-primary/90 select-none"
+              role="menuitem"
             >
               Termin buchen
             </Button>
             <a
               href="tel:061120779"
               className="flex items-center justify-center space-x-2 w-full py-3 text-primary border border-primary rounded-lg hover:bg-primary/10 transition-colors"
+              role="menuitem"
             >
               <Phone size={18} />
               <span>0611-20779</span>

@@ -64,7 +64,7 @@ export function Services({ onBookService }: ServicesProps) {
           >
             Services & Preise
           </h2>
-          <p className="text-foreground/70 max-w-2xl mx-auto select-none">
+          <p className="text-foreground/70 max-w-2xl mx-auto">
             Transparente Preise für erstklassige Dienstleistungen.
             Wir bieten professionelles Handwerk für Damen und Herren.
           </p>
@@ -152,7 +152,7 @@ export function Services({ onBookService }: ServicesProps) {
 
         {/* Note */}
         <div className="mt-12 text-center">
-          <Card className="inline-block bg-card/50 border-primary/30 px-8 py-4 select-none">
+          <Card className="inline-block bg-card/50 border-primary/30 px-8 py-4">
             <p className="text-sm text-muted-foreground">
               Alle Preise verstehen sich inklusive MwSt. • Terminvereinbarung empfohlen
             </p>

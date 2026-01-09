@@ -8,6 +8,11 @@ dist
 dist-ssr
 *.local
 
+# Lock files (optional - comment out if using version control for locks)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -43,6 +48,14 @@ coverage
 .cache
 .temp
 *.tsbuildinfo
+
+# Deployment
+.vercel
+.netlify
+
+# Database
+*.sqlite
+*.db
 
 # Claude AI
 .claude
