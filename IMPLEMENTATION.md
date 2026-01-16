@@ -3,16 +3,31 @@
 ## Changelog
 
 ### 2025-01-16
+**Features & UX:**
 - **Footer Developer Credit**: Added "Developed by Galart" with GitHub icon (github-mark.svg)
 - **Copyright Year**: Updated from 2025 to 2026
 - **Text Selection Standardization**: Implemented industry norms - content selectable, UI elements not
 - **Card Styling**: Unified all info cards to use `py-4`, `text-sm text-muted-foreground`
+
+**Assets & Content:**
 - **Barber Images**: Replaced Unsplash URLs with local images (marco.webp, anna.webp, thomas.webp)
 - **Barber Image Cropping**: Fixed with `object-top` class
 - **Google Maps**: Fixed embed to show correct address (Reichsapfelstraße 12, 65201 Wiesbaden)
 - **Navigation**: Added "Über uns" (About) to nav items and scroll tracking
+
+**Bug Fixes:**
 - **FAB Animations**: Fixed smooth fade-in/fade-out behavior
 - **useScroll Hook**: Fixed footer offset calculation for FAB positioning
+
+**Code Cleanup:**
+- **Deleted 40+ unused UI components** (accordion, alert, avatar, badge, breadcrumb, carousel, checkbox, collapsible, command, context-menu, dialog, drawer, dropdown-menu, form, input-otp, menubar, navigation-menu, pagination, popover, progress, radio-group, resizable, scroll-area, select, separator, sheet, skeleton, slider, sonner, switch, sidebar, table, textarea, toggle, toggle-group, tooltip, chart, hover-card, use-mobile)
+- **Removed 25+ unused dependencies** (@emotion/*, @popperjs/*, multiple @radix-ui packages, cmdk, embla-carousel-react, input-otp, motion, next-themes, react-resizable-panels, react-responsive-masonry, react-slick, recharts)
+- **Deleted trash files**: package-lock.json, guidelines/, ATTRIBUTIONS.md
+- **Updated .gitignore**: Added deployment platforms, lock files (commented), databases
+
+**Documentation:**
+- **Updated IMPLEMENTATION.md**: Added changelog, text selection policy, footer credit docs, useScroll hook docs, updated navigation section, added image assets catalog, added Google Maps embed docs
+- **Updated PROJECT_MEMORY.md**: Added changelog, updated assets, updated navigation, added developer credit section, added known issues/TODO
 
 ---
 
@@ -22,32 +37,26 @@
 - **React 18.3.1** - UI framework
 - **TypeScript** - Type safety (.tsx files)
 - **Vite 6.3.5** - Build tool & dev server
-- **pnpm** - Package manager (configured)
+- **pnpm** - Package manager (uses hard links for efficient storage)
 
 ### Styling
 - **Tailwind CSS 4.1.12** - Utility-first CSS framework
-- **Radix UI** - Accessible component primitives (25+ packages)
-- **@emotion/react** - CSS-in-JS support
+- **Radix UI** - Accessible component primitives (dialog, label, popover, slot, tabs)
+- **class-variance-authority** - Variant utilities
 - **tw-animate-css** - Animation utilities
 
 ### Form & Data
 - **react-hook-form 7.55.0** - Form state management
 - **date-fns 3.6.0** - Date utilities (with German locale)
 - **react-day-picker 8.10.1** - Calendar component
-- **input-otp 1.4.2** - OTP input support
 
 ### UI Components
 - **lucide-react 0.487.0** - Icon library
-- **motion (Framer Motion) 12.23.24** - Animations
-- **embla-carousel-react 8.6.0** - Carousel
 - **vaul 1.1.2** - Drawer/sheet components
 - **sonner 2.0.3** - Toast notifications
 
 ### Additional
-- **next-themes 0.4.6** - Theme management (dark mode ready)
-- **class-variance-authority 0.7.1** - Variant utilities
 - **clsx 2.1.1** + **tailwind-merge 3.2.0** - Class merging
-- **recharts 2.15.2** - Charts (unused currently)
 
 ---
 
@@ -76,36 +85,14 @@
 │       ├── App.tsx                  # Main app (routing, state)
 │       │
 │       └── components/
-│           ├── ui/                  # Radix UI primitives (35+ files)
-│           │   ├── accordion.tsx
-│           │   ├── alert-dialog.tsx
-│           │   ├── aspect-ratio.tsx
-│           │   ├── avatar.tsx
+│           ├── ui/                  # Radix UI primitives (7 files - all used)
 │           │   ├── button.tsx
 │           │   ├── calendar.tsx
 │           │   ├── card.tsx
-│           │   ├── checkbox.tsx
-│           │   ├── collapsible.tsx
-│           │   ├── context-menu.tsx
-│           │   ├── dialog.tsx
-│           │   ├── dropdown-menu.tsx
-│           │   ├── hover-card.tsx
 │           │   ├── input.tsx
 │           │   ├── label.tsx
-│           │   ├── menubar.tsx
-│           │   ├── navigation-menu.tsx
-│           │   ├── popover.tsx
-│           │   ├── progress.tsx
-│           │   ├── radio-group.tsx
-│           │   ├── scroll-area.tsx
-│           │   ├── select.tsx
-│           │   ├── separator.tsx
-│           │   ├── slider.tsx
-│           │   ├── switch.tsx
 │           │   ├── tabs.tsx
-│           │   ├── toggle-group.tsx
-│           │   ├── toggle.tsx
-│           │   └── tooltip.tsx
+│           │   └── utils.ts
 │           │
 │           ├── About.tsx             # Story/About section
 │           ├── Barbers.tsx          # Team showcase
@@ -642,8 +629,8 @@ npm run build
 3. **No testing framework** - Consider adding Vitest + React Testing Library
 4. **No backend** - Booking currently logs to console
 5. **No ESLint/Prettier** - Consider adding for code quality
-6. **Unsplash placeholder images** - Replace with real photos
-7. **Pass access removed** - Recent commit shows removed demo-pass
+6. **Gallery placeholder images** - Replace Unsplash URLs with real photos
+7. **Large image sizes** - Consider compressing Interior_2.webp (3.3MB)
 
 ---
 

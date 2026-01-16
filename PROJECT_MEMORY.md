@@ -3,14 +3,30 @@
 ## Changelog
 
 ### 2025-01-16
+**Features & UX:**
 - **Footer**: Added developer credit "Developed by Galart" with GitHub icon link
 - **Footer**: Updated copyright year from 2025 to 2026
 - **UX**: Standardized text selection - content selectable, UI elements not
 - **Styling**: Unified info card styling across Contact, Services, and Barbers sections
-- **Assets**: Replaced Unsplash barber images with local files (marco.webp, anna.webp, thomas.webp)
+
+**Assets & Content:**
+- **Barber Photos**: Replaced Unsplash URLs with local files (marco.webp, anna.webp, thomas.webp)
 - **Contact**: Fixed Google Maps embed to show correct address
 - **Navigation**: Added "Über uns" (About) section to nav
+
+**Bug Fixes:**
 - **FAB**: Fixed smooth fade-in/fade-out animations, improved footer offset calculation
+
+**Code Cleanup:**
+- **Deleted 40+ unused UI components** - Reduced from 48 to 7 files (only button, calendar, card, input, label, tabs, utils remain)
+- **Removed 25+ unused dependencies** - Reduced from ~50 to ~15 packages
+- **Deleted trash files**: package-lock.json, guidelines/, ATTRIBUTIONS.md
+- **Updated .gitignore**: Added deployment platforms (.vercel, .netlify), databases
+
+**Documentation:**
+- **Updated .gitignore** with deployment platforms, lock files (commented), databases
+- **Updated IMPLEMENTATION.md** with changelog, text selection policy, footer credit docs, useScroll hook docs, navigation updates, image assets catalog, Google Maps embed docs
+- **Updated PROJECT_MEMORY.md** with changelog, assets update, navigation update, developer credit, known issues/TODO
 
 ---
 
