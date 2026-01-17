@@ -29,7 +29,7 @@ export function Hero({ onBookNow }: HeroProps) {
   }, [scrollY, isDesktop]);
 
   return (
-    <section className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-background">
+    <section className="relative h-screen md:min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-background">
       {/* Background Image - Desktop with parallax */}
       <div
         ref={bgRef}
