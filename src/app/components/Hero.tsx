@@ -28,7 +28,7 @@ export function Hero({ onBookNow }: HeroProps) {
   }, [scrollY, isDesktop]);
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden">
       {/* Background Image - Desktop with parallax */}
       <div
         ref={bgRef}
@@ -127,7 +127,8 @@ export function Hero({ onBookNow }: HeroProps) {
             alt="Schiersteiner Barbershop"
             width="512"
             height="512"
-            loading="lazy"
+            loading="eager"
+            fetchpriority="high"
             className="w-full h-full object-contain drop-shadow-2xl"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent blur-md rounded-full"></div>

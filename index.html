@@ -34,8 +34,8 @@
       <!-- Performance: Preload LCP image (hero background) -->
       <link rel="preload" href="/src/assets/Interior_3.webp" as="image" fetchpriority="high">
 
-      <!-- Google Fonts - direct link for faster loading -->
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+      <!-- Google Fonts - deferred loading for better performance -->
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
       <!-- Critical CSS - inline for faster FCP -->
       <style>
@@ -52,7 +52,7 @@
         }
         /* Prevent layout shift with hero dimensions */
         .hero-placeholder {
-          min-height: 100vh;
+          min-height: 100dvh;
           display: flex;
           align-items: center;
           justify-content: center;

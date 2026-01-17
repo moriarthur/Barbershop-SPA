@@ -250,7 +250,7 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
 
   if (isConfirmed) {
     return (
-      <div className="min-h-screen bg-background pt-24 pb-12 px-4">
+      <div className="min-h-[100dvh] bg-background pt-24 pb-12 px-4">
         <div className="max-w-2xl mx-auto">
           <Card className="bg-card border-primary/50 p-8 text-center">
             <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">

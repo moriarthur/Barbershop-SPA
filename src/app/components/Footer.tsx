@@ -40,7 +40,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
 
           {/* Quick Links */}
           <div className="text-center md:text-left">
-            <h4 className="text-foreground mb-4">Schnellzugriff</h4>
+            <div className="text-foreground mb-4 font-medium" role="heading" aria-level="2">Schnellzugriff</div>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="#services" className="text-foreground/70 hover:text-primary transition-colors">
@@ -67,7 +67,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
 
           {/* Contact */}
           <div className="text-center md:text-left">
-            <h4 className="text-foreground mb-4">Kontakt</h4>
+            <div className="text-foreground mb-4 font-medium" role="heading" aria-level="2">Kontakt</div>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start justify-center md:justify-start space-x-2">
                 <MapPin size={16} className="text-primary mt-1 flex-shrink-0" />
@@ -87,6 +87,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
                   href="https://instagram.com/Schiersteiner_Barbershop"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Besuchen Sie uns auf Instagram"
                   className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
                 >
                   <Instagram className="text-primary" size={18} />
@@ -95,6 +96,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
                   href="https://www.facebook.com/people/Schiersteiner-Barbershop/pfbid025iAjKc2YozoKGvXb3ui2SJzdeDXnNzNhJT8qDzS4BbCkjWKZCJSu7ErNcdJaJPn8l/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Besuchen Sie uns auf Facebook"
                   className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
                 >
                   <Facebook className="text-primary" size={18} />

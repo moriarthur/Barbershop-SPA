@@ -104,6 +104,7 @@ export function Contact() {
                   href="https://instagram.com/Schiersteiner_Barbershop"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Besuchen Sie uns auf Instagram"
                   className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
                 >
                   <Instagram className="text-primary" size={20} />
@@ -112,6 +113,7 @@ export function Contact() {
                   href="https://www.facebook.com/people/Schiersteiner-Barbershop/pfbid025iAjKc2YozoKGvXb3ui2SJzdeDXnNzNhJT8qDzS4BbCkjWKZCJSu7ErNcdJaJPn8l/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Besuchen Sie uns auf Facebook"
                   className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
                 >
                   <Facebook className="text-primary" size={20} />

@@ -16,4 +16,26 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    // Enable CSS code splitting for better caching
+    cssCodeSplit: true,
+    // Use esbuild for minification (built-in, faster)
+    minify: 'esbuild',
+    rollupOptions: {
+      output: {
+        // Manual chunk splitting for vendor code
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'ui-vendor': ['@radix-ui/react-dialog', '@radix-ui/react-label', '@radix-ui/react-popover', '@radix-ui/react-slot', '@radix-ui/react-tabs'],
+          'date-vendor': ['date-fns', 'react-day-picker'],
+        },
+        // Better chunk naming for caching
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]',
+      },
+    },
+    // Target modern browsers for smaller output
+    target: 'esnext',
+  },
 })

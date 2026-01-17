@@ -28,7 +28,7 @@ class ErrorBoundary extends Component<{ children: React.ReactNode }, { hasError:
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-background flex items-center justify-center text-foreground p-4">
+        <div className="min-h-[100dvh] bg-background flex items-center justify-center text-foreground p-4">
           <div className="text-center">
             <h2 className="text-xl mb-4">Etwas ist schiefgelaufen</h2>
             <p className="text-muted-foreground mb-4">{this.state.error?.message}</p>
@@ -180,7 +180,7 @@ export default function App() {
   }, [isBookingOpen]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-[100dvh] bg-background text-foreground">
       <Navigation onNavigate={handleNavigate} currentSection={currentSection} />
 
       {legalPage && (

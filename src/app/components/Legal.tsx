@@ -147,7 +147,7 @@ export function Legal({ type, onClose }: LegalProps) {
 
   return (
     <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm overflow-y-auto">
-      <div className="min-h-screen py-24 px-4">
+      <div className="min-h-[100dvh] py-24 px-4">
         <div className="max-w-3xl mx-auto">
           {/* Header */}
           <div className="flex items-center justify-between mb-8">

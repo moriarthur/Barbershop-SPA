@@ -2,6 +2,28 @@
 
 ## Changelog
 
+### 2025-01-17
+**Performance Optimizations:**
+- **LCP Optimization**: Removed `loading="lazy"` from logo_2.webp in Hero (LCP element), added `fetchpriority="high"`
+- **Image Compression**: Optimized Interior_2.webp (180KB → 110KB, ~39% reduction), optimized logo_2.webp (47KB → 14KB, ~70% reduction)
+- **Build Optimization**: Enabled CSS code splitting, manual chunk splitting for vendor code, better caching with content hashes
+- **Deferred Font Loading**: Google Fonts now use `media="print" onload="this.media='all'"` to prevent render-blocking
+- **Layout Shift Prevention**: Added explicit width/height to navigation logo image
+
+**Accessibility Improvements:**
+- **Social Links**: Added `aria-label` to Instagram/Facebook links in Contact and Footer components
+- **Heading Hierarchy**: Fixed h4 elements in Footer to use div with `role="heading" aria-level="2"`
+
+**Build Configuration:**
+- **Minification**: Using esbuild (built-in) instead of terser
+- **Code Splitting**: Manual chunks for react-vendor, ui-vendor, date-vendor
+- **Target**: Modern browsers (esnext) for smaller output
+
+**Documentation:**
+- Updated IMPLEMENTATION.md with performance changelog
+- Updated PROJECT_MEMORY.md with performance changelog
+- Updated netlify.toml with current build settings
+
 ### 2025-01-16
 **Features & UX:**
 - **Footer Developer Credit**: Added "Developed by Galart" with GitHub icon (github-mark.svg)
@@ -139,8 +161,31 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    cssCodeSplit: true,
+    minify: 'esbuild',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'ui-vendor': ['@radix-ui/react-dialog', '@radix-ui/react-label', '@radix-ui/react-popover', '@radix-ui/react-slot', '@radix-ui/react-tabs'],
+          'date-vendor': ['date-fns', 'react-day-picker'],
+        },
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]',
+      },
+    },
+    target: 'esnext',
+  },
 })
 ```
+
+**Build Output:**
+- CSS is split into separate files for better caching
+- Vendor code is split into chunks (react-vendor: ~142KB, ui-vendor: ~14KB, date-vendor: ~52KB)
+- All assets use content hashing for long-term caching
+- Main bundle: ~103KB (gzipped: ~27KB)
 
 ### index.html
 - `lang="de"` - German language attribute
@@ -630,7 +675,6 @@ npm run build
 4. **No backend** - Booking currently logs to console
 5. **No ESLint/Prettier** - Consider adding for code quality
 6. **Gallery placeholder images** - Replace Unsplash URLs with real photos
-7. **Large image sizes** - Consider compressing Interior_2.webp (3.3MB)
 
 ---
 
@@ -648,22 +692,30 @@ Recent commits indicate:
 
 ## Accessibility Features
 
-- **ARIA labels** on interactive elements
+- **ARIA labels** on all interactive elements (social media links, navigation buttons)
 - **Semantic HTML** (nav, section, header, footer)
 - **Keyboard navigation** support (Radix UI)
 - **Focus states** with ring color
 - **High contrast** colors (dark theme)
 - **Screen reader** friendly text
+- **Heading hierarchy** - Proper heading levels throughout, footer uses `role="heading"` with appropriate levels
+- **Layout shift prevention** - Explicit width/height on all images
 
 ---
 
 ## Performance Considerations
 
+**Implemented Optimizations:**
 1. **WebP format** for images (smaller file sizes)
-2. **Tailwind purging** - only used styles included
-3. **Lazy loading** - Consider adding for images
-4. **Code splitting** - Vite handles automatically
-5. **Image optimization** - Some large images (Interior_2.webp = 3.3MB)
+2. **Tailwind v4 purging** - only used styles included
+3. **Image optimization** - Interior_2.webp (110KB), logo_2.webp (14KB), all images compressed
+4. **LCP optimization** - Hero logo eager-loaded with high fetch priority
+5. **Code splitting** - Vite automatic + manual vendor chunks (react-vendor, ui-vendor, date-vendor)
+6. **CSS code splitting** - Enabled for better caching
+7. **Deferred font loading** - Google Fonts use print-media trick to prevent render-blocking
+8. **Content hashing** - All assets use `[hash]` for long-term caching
+9. **Modern target** - esnext for smaller bundle size
+10. **Preconnect hints** - fonts.googleapis.com and fonts.gstatic.com
 
 ---
 
@@ -689,12 +741,14 @@ Recent commits indicate:
 ## Image Assets
 
 **Logo Files:**
-- `src/assets/logo.png` (905KB) - Navigation logo
-- `src/assets/logo_2.webp` (313KB) - Hero section / footer logo
+- `src/assets/logo.png` (905KB) - Navigation logo (legacy)
+- `src/assets/logo.webp` (5.6KB) - Navigation logo (optimized)
+- `src/assets/logo_2.webp` (14KB) - Hero section / footer logo (optimized 2025-01-17)
 
 **Interior Photos:**
-- `src/assets/Interior_2.webp` (3.3MB) - About section
-- `src/assets/Interior_3.webp` (629KB) - Hero background with parallax
+- `src/assets/Interior_2.webp` (110KB) - About section (optimized 2025-01-17)
+- `src/assets/Interior_3.webp` (107KB) - Hero background with parallax
+- `src/assets/optimized/` - Backup directory for original images
 
 **Team Photos (Local):**
 - `src/assets/barbers/marco.webp` - Marco Weber
