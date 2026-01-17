@@ -10,6 +10,7 @@ interface HeroProps {
 
 export function Hero({ onBookNow }: HeroProps) {
   const bgRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const [isDesktop, setIsDesktop] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const { scrollY } = useScroll();
@@ -22,6 +23,12 @@ export function Hero({ onBookNow }: HeroProps) {
     return () => window.removeEventListener('resize', checkDesktop);
   }, []);
 
+  // Fix mobile viewport height - set once to prevent address bar issues
+  useEffect(() => {
+    if (isDesktop || !sectionRef.current) return;
+    sectionRef.current.style.height = `${window.innerHeight}px`;
+  }, [isDesktop]);
+
   // Only run parallax effect on desktop
   useEffect(() => {
     if (!isDesktop || !bgRef.current) return;
@@ -29,7 +36,7 @@ export function Hero({ onBookNow }: HeroProps) {
   }, [scrollY, isDesktop]);
 
   return (
-    <section className="relative h-screen md:min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-background">
+    <section ref={sectionRef} className="relative md:min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-background">
       {/* Background Image - Desktop with parallax */}
       <div
         ref={bgRef}
