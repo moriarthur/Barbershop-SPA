@@ -41,7 +41,7 @@ export function About() {
             </div>
             <h2
               className="text-3xl sm:text-4xl md:text-5xl mb-6 text-foreground select-none"
-              style={{ fontFamily: 'Playfair Display, serif' }}
+              style={{ fontFamily: "'Playfair Display', serif" }}
             >
               Tradition trifft<br />
               <span className="text-primary">Perfektion</span>
