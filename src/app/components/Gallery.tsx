@@ -1,5 +1,5 @@
 import React from 'react';
-import interior2 from '../../assets/Interior_2.webp';
+import interior2 from '../../assets/optimized/Interior_2.webp';
 import interior from '../../assets/gallery/interior.webp';
 import cutting from '../../assets/gallery/cutting.webp';
 import beard from '../../assets/gallery/beard.webp';
@@ -8,6 +8,10 @@ import storefront from '../../assets/gallery/storefront.webp';
 import shave from '../../assets/gallery/shave.webp';
 import scissors from '../../assets/gallery/scissors.webp';
 import chair from '../../assets/gallery/chair.webp';
+import products from '../../assets/gallery/products.webp';
+import mirror from '../../assets/gallery/mirror.webp';
+import customer from '../../assets/gallery/customer.webp';
+import tools from '../../assets/gallery/tools.webp';
 
 const galleryImages = [
   {
@@ -45,6 +49,22 @@ const galleryImages = [
   {
     url: chair,
     alt: 'Barberstuhl',
+  },
+  {
+    url: products,
+    alt: 'Pflegeprodukte',
+  },
+  {
+    url: mirror,
+    alt: 'Großer Spiegel',
+  },
+  {
+    url: customer,
+    alt: 'Zufriedener Kunde',
+  },
+  {
+    url: tools,
+    alt: 'Barber Werkzeuge',
   },
 ];
 

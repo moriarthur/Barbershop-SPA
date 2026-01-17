@@ -81,6 +81,7 @@ export function Barbers() {
                 <img
                   src={barber.image}
                   alt={barber.name}
+                  loading="lazy"
                   className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent"></div>

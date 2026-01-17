@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
-import interiorImage from '../../assets/Interior_3.webp';
+import interiorImage from '../../assets/optimized/Interior_3.webp';
 import logo2 from '../../assets/logo_2.webp';
 import { useScroll } from '../hooks/useScroll';
 
@@ -10,17 +10,26 @@ interface HeroProps {
 
 export function Hero({ onBookNow }: HeroProps) {
   const bgRef = useRef<HTMLDivElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
   const { scrollY } = useScroll();
 
+  // Detect desktop on mount and resize
   useEffect(() => {
-    if (bgRef.current) {
-      bgRef.current.style.transform = `translateY(${scrollY * 0.3}px)`;
-    }
-  }, [scrollY]);
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
+  // Only run parallax effect on desktop
+  useEffect(() => {
+    if (!isDesktop || !bgRef.current) return;
+    bgRef.current.style.transform = `translateY(${scrollY * 0.3}px)`;
+  }, [scrollY, isDesktop]);
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image - Desktop with parallax */}
       <div
         ref={bgRef}
         className="absolute inset-0 z-0 hidden md:block will-change-transform"
@@ -28,6 +37,10 @@ export function Hero({ onBookNow }: HeroProps) {
         <img
           src={interiorImage}
           alt="Schiersteiner Barbershop elegant interior with vintage decor and warm ambiance"
+          width="1920"
+          height="1080"
+          loading="eager"
+          fetchpriority="high"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background"></div>
@@ -37,6 +50,10 @@ export function Hero({ onBookNow }: HeroProps) {
         <img
           src={interiorImage}
           alt="Schiersteiner Barbershop elegant interior with vintage decor and warm ambiance"
+          width="1920"
+          height="1080"
+          loading="eager"
+          fetchpriority="high"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background"></div>
@@ -108,6 +125,9 @@ export function Hero({ onBookNow }: HeroProps) {
           <img
             src={logo2}
             alt="Schiersteiner Barbershop"
+            width="512"
+            height="512"
+            loading="lazy"
             className="w-full h-full object-contain drop-shadow-2xl"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent blur-md rounded-full"></div>

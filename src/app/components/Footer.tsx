@@ -23,6 +23,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
               <img
                 src={logo2}
                 alt="Schiersteiner Barbershop"
+                loading="lazy"
                 className="w-28 h-28 object-contain"
               />
               <div className="text-center md:text-left">

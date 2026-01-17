@@ -6,12 +6,21 @@ import { Label } from './ui/label';
 import { Calendar } from './ui/calendar';
 import { Check, ArrowLeft, Clock, AlertCircle } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { format, addDays, setHours, setMinutes } from 'date-fns';
-import { de } from 'date-fns/locale';
 import marco from '../../assets/barbers/marco.webp';
 import anna from '../../assets/barbers/anna.webp';
 import thomas from '../../assets/barbers/thomas.webp';
 import anyBarber from '../../assets/barbers/any.webp';
+
+// Native Intl date formatter for German locale (replaces date-fns ~60KB)
+const formatDateGerman = (date: Date | null | undefined): string => {
+  if (!date) return '';
+  return new Intl.DateTimeFormat('de-DE', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  }).format(date);
+};
 
 interface Barber {
   id: string;
@@ -97,8 +106,10 @@ const generateTimeSlots = () => {
 };
 
 export function Booking({ preselectedService, preselectedCategory, onClose, onOpenLegal }: BookingProps) {
-  const [step, setStep] = useState(1);
+  // Start at step 2 if service is preselected, otherwise step 1
+  const [step, setStep] = useState(preselectedService ? 2 : 1);
   const [selectedService, setSelectedService] = useState<Service | null>(preselectedService || null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(preselectedCategory || null);
   const [selectedBarber, setSelectedBarber] = useState<Barber | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [selectedTime, setSelectedTime] = useState<string>('');
@@ -221,6 +232,22 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
     }
   };
 
+  const handleChangeService = () => {
+    setStep(1);
+    setSelectedService(null);
+    setSelectedCategory(null);
+  };
+
+  // Calculate display step number (when preselected, show 1-3 instead of 2-4)
+  const getDisplayStep = () => {
+    if (!preselectedService) return step;
+    return step > 1 ? step - 1 : step;
+  };
+
+  const getTotalSteps = () => {
+    return preselectedService ? 3 : 4;
+  };
+
   if (isConfirmed) {
     return (
       <div className="min-h-screen bg-background pt-24 pb-12 px-4">
@@ -236,7 +263,8 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
               Buchung erfolgreich!
             </h2>
             <p className="text-muted-foreground mb-6">
-              Ihre Buchung wurde erfolgreich übermittelt. Sie erhalten eine Bestätigungsmail an {customerEmail}.
+              Ihre Buchung wurde erfolgreich übermittelt. Sie erhalten eine Bestätigungsmail an{' '}
+              <span className="text-foreground">{customerEmail}</span>.
             </p>
             <div className="bg-secondary/50 border border-border rounded-lg p-6 mb-6 text-left">
               <div className="space-y-3">
@@ -251,7 +279,7 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
                 <div>
                   <div className="text-sm text-muted-foreground">Datum & Uhrzeit</div>
                   <div className="text-foreground">
-                    {selectedDate && format(selectedDate, 'PPP', { locale: de })} um {selectedTime}
+                    {selectedDate && formatDateGerman(selectedDate)} um {selectedTime}
                   </div>
                 </div>
                 <div>
@@ -292,26 +320,40 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
                 Termin buchen
               </h1>
               <p className="text-muted-foreground">
-                Schritt {step} von 4
+                Schritt {getDisplayStep()} von {getTotalSteps()}
               </p>
             </div>
           </div>
-          <button onClick={onClose} className="text-foreground hover:text-primary cursor-pointer select-none">
-            Abbrechen
-          </button>
+          <div className="flex items-center space-x-4">
+            {selectedService && step > 1 && (
+              <button
+                onClick={handleChangeService}
+                className="text-sm text-primary hover:text-primary/80 cursor-pointer select-none"
+              >
+                Service ändern
+              </button>
+            )}
+            <button onClick={onClose} className="text-foreground hover:text-primary cursor-pointer select-none">
+              Abbrechen
+            </button>
+          </div>
         </div>
 
         {/* Progress Bar */}
         <div className="mb-8">
           <div className="flex space-x-2">
-            {[1, 2, 3, 4].map((s) => (
-              <div
-                key={s}
-                className={`h-2 flex-1 rounded-full transition-colors ${
-                  s <= step ? 'bg-primary' : 'bg-secondary'
-                }`}
-              />
-            ))}
+            {Array.from({ length: getTotalSteps() }).map((_, i) => {
+              const s = i + 1;
+              const adjustedStep = preselectedService ? step - 1 : step;
+              return (
+                <div
+                  key={s}
+                  className={`h-2 flex-1 rounded-full transition-colors ${
+                    s <= adjustedStep ? 'bg-primary' : 'bg-secondary'
+                  }`}
+                />
+              );
+            })}
           </div>
         </div>
 
@@ -376,6 +418,31 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
         {step === 2 && (
           <div>
             <h2 className="text-xl mb-6 text-foreground">Wählen Sie Ihren Barber</h2>
+
+            {/* Selected Service Summary */}
+            {selectedService && (
+              <Card className="bg-secondary/50 border-primary/30 p-4 mb-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
+                      Ausgewählter Service
+                    </div>
+                    <div className="text-foreground font-medium">{selectedService.name}</div>
+                    <div className="flex items-center gap-4 mt-1">
+                      <span className="text-primary text-sm">{selectedService.price}</span>
+                      <span className="text-muted-foreground text-sm">{selectedService.duration}</span>
+                    </div>
+                  </div>
+                  <button
+                    onClick={handleChangeService}
+                    className="text-sm text-primary hover:text-primary/80 cursor-pointer select-none"
+                  >
+                    Ändern
+                  </button>
+                </div>
+              </Card>
+            )}
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {barbers.map((barber) => (
                 <Card
@@ -559,7 +626,7 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
                   <div>
                     <div className="text-sm text-muted-foreground">Datum & Uhrzeit</div>
                     <div className="text-foreground">
-                      {selectedDate && format(selectedDate, 'PPP', { locale: de })} um {selectedTime}
+                      {selectedDate && formatDateGerman(selectedDate)} um {selectedTime}
                     </div>
                   </div>
                   <div className="flex items-center space-x-2 text-muted-foreground">

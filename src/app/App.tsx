@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import { Navigation } from './components/Navigation';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -12,6 +12,37 @@ import { Reviews } from './components/Reviews';
 import { FloatingActionButton } from './components/FloatingActionButton';
 import { PromoBanner } from './components/PromoBanner';
 import { Legal } from './components/Legal';
+
+// Error Boundary for debugging
+class ErrorBoundary extends Component<{ children: React.ReactNode }, { hasError: boolean; error: Error | null }> {
+  constructor(props: { children: React.ReactNode }) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error: Error) {
+    console.error('ErrorBoundary caught:', error);
+    return { hasError: true, error };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="min-h-screen bg-background flex items-center justify-center text-foreground p-4">
+          <div className="text-center">
+            <h2 className="text-xl mb-4">Etwas ist schiefgelaufen</h2>
+            <p className="text-muted-foreground mb-4">{this.state.error?.message}</p>
+            <p className="text-xs text-muted-foreground mb-4">Error: {String(this.state.error)}</p>
+            <button onClick={() => window.location.reload()} className="text-primary hover:underline">
+              Seite neu laden
+            </button>
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 interface Service {
   name: string;
@@ -32,7 +63,7 @@ export default function App() {
 
     if (section === 'booking') {
       setIsBookingOpen(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      fastScrollTo(0);
     } else {
       // Close booking if open
       if (isBookingOpen) {
@@ -50,9 +81,32 @@ export default function App() {
     }
   };
 
+  // Custom smooth scroll with faster duration (~400ms instead of browser's ~800ms)
+  const fastScrollTo = (targetY: number, duration = 400) => {
+    const startY = window.pageYOffset;
+    const distance = targetY - startY;
+    const startTime = performance.now();
+
+    const animateScroll = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Ease out cubic for smooth but quick deceleration
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+
+      window.scrollTo(0, startY + distance * easeOut);
+
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+    };
+
+    requestAnimationFrame(animateScroll);
+  };
+
   const scrollToSection = (section: string) => {
     if (section === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      fastScrollTo(0);
     } else {
       const element = document.getElementById(section);
       if (element) {
@@ -60,10 +114,7 @@ export default function App() {
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - offset;
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
+        fastScrollTo(offsetPosition);
       }
     }
   };
@@ -133,16 +184,20 @@ export default function App() {
       <Navigation onNavigate={handleNavigate} currentSection={currentSection} />
 
       {legalPage && (
-        <Legal type={legalPage} onClose={handleCloseLegal} />
+        <ErrorBoundary>
+          <Legal type={legalPage} onClose={handleCloseLegal} />
+        </ErrorBoundary>
       )}
 
       {isBookingOpen ? (
-        <Booking
-          preselectedService={selectedService}
-          preselectedCategory={selectedCategory}
-          onClose={handleCloseBooking}
-          onOpenLegal={handleOpenLegal}
-        />
+        <ErrorBoundary>
+          <Booking
+            preselectedService={selectedService}
+            preselectedCategory={selectedCategory}
+            onClose={handleCloseBooking}
+            onOpenLegal={handleOpenLegal}
+          />
+        </ErrorBoundary>
       ) : (
         <>
           <PromoBanner onBookNow={() => handleNavigate('booking')} />

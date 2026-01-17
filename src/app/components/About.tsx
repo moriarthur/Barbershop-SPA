@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from './ui/card';
 import { Award, Heart, Users, Clock } from 'lucide-react';
-import interiorImage from '../../assets/Interior_2.webp';
+import interiorImage from '../../assets/optimized/Interior_2.webp';
 
 export function About() {
   const features = [
@@ -73,6 +73,9 @@ export function About() {
               <img
                 src={interiorImage}
                 alt="Schiersteiner Barbershop Interior"
+                width="1200"
+                height="1500"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>

@@ -59,3 +59,7 @@ coverage
 
 # Claude AI
 .claude
+
+# Project Documentation (internal)
+PROJECT_MEMORY.md
+IMPLEMENTATION.md
