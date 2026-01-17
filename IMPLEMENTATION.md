@@ -2,7 +2,26 @@
 
 ## Changelog
 
-### 2025-01-17
+### 2025-01-17 (Part 2)
+**Performance:**
+- **Hero Background**: Lazy loaded with fade-in effect (FCP +500-800ms)
+- **Interior_3.webp**: Optimized (107KB → 60KB, -46KB ~43%)
+- **Preload Strategy**: Changed from background → hero logo (logo_2.webp as LCP)
+- **Horizontal Scroll Fix**: Added `overflow-x: hidden` to html/body (mobile UX)
+
+**Mobile UX:**
+- **Status Bar Color**: Added meta tags for iOS/Android native feel
+  - `theme-color="#161310"` (Android)
+  - `apple-mobile-web-app-status-bar-style="black-translucent"` (iOS)
+  - `apple-mobile-web-app-capable="yes"` (fullscreen mode)
+
+**SEO:**
+- **robots.txt**: Created (fixes 66 validation errors in Lighthouse)
+
+**Gallery:**
+- **Zoom Effect**: Removed hover zoom from images
+
+### 2025-01-17 (Part 1)
 **Performance Optimizations:**
 - **LCP Optimization**: Removed `loading="lazy"` from logo_2.webp in Hero (LCP element), added `fetchpriority="high"`
 - **Image Compression**: Optimized Interior_2.webp (180KB → 110KB, ~39% reduction), optimized logo_2.webp (47KB → 14KB, ~70% reduction)
@@ -192,6 +211,12 @@ export default defineConfig({
 - SEO meta tags (description, keywords, Open Graph, Twitter)
 - Favicon links for all sizes
 - Root div: `<div id="root"></div>`
+- Mobile status bar meta tags:
+  ```html
+  <meta name="theme-color" content="#161310">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  ```
 
 ---
 
@@ -644,6 +669,34 @@ format(date, 'PPP', { locale: de })
 
 ---
 
+## Mobile UX Enhancements
+
+### Status Bar Color Matching
+- **Android**: `theme-color` meta tag sets status bar to `#161310`
+- **iOS**: `black-translucent` makes status bar overlay transparently
+- Result: Seamless native app feel on mobile browsers
+
+### Horizontal Scroll Prevention
+```css
+/* src/styles/theme.css */
+html, body {
+  overflow-x: hidden;
+}
+```
+Prevents accidental horizontal scrolling on mobile devices.
+
+### Dynamic Viewport Height
+- Uses `dvh` (dynamic viewport height) instead of `vh`
+- Prevents jerky scroll when mobile browser address bar collapses
+- Applied to: Hero, App wrapper, Booking, Legal, all full-screen sections
+
+### Lazy Loading Strategy
+- **Hero Background**: Lazy loaded with fade-in effect (improves FCP)
+- **Hero Logo**: Eager loaded with high priority (now the LCP element)
+- **Below-fold images**: All use `loading="lazy"`
+
+---
+
 ## Build & Development
 
 ### Start Dev Server
@@ -747,7 +800,7 @@ Recent commits indicate:
 
 **Interior Photos:**
 - `src/assets/Interior_2.webp` (110KB) - About section (optimized 2025-01-17)
-- `src/assets/Interior_3.webp` (107KB) - Hero background with parallax
+- `src/assets/Interior_3.webp` (60KB) - Hero background, lazy loaded (optimized 2025-01-17 P2)
 - `src/assets/optimized/` - Backup directory for original images
 
 **Team Photos (Local):**

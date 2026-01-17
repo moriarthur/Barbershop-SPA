@@ -41,7 +41,7 @@ export function Hero({ onBookNow }: HeroProps) {
           width="1920"
           height="1080"
           loading="lazy"
-          className={`w-full h-full object-cover transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-full h-full object-cover transition-opacity duration-500 blur-sm ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
           onLoad={() => setImageLoaded(true)}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background"></div>
@@ -54,8 +54,9 @@ export function Hero({ onBookNow }: HeroProps) {
           width="1920"
           height="1080"
           loading="lazy"
-          className={`w-full h-full object-cover transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-full h-full object-cover transition-opacity duration-500 blur-sm ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
           onLoad={() => setImageLoaded(true)}
+          style={{ transform: 'translateZ(0)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background"></div>
       </div>

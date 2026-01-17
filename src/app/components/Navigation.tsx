@@ -92,9 +92,7 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
             <img
               src={logo}
               alt="Schiersteiner Barbershop Logo"
-              width="200"
-              height="48"
-              className="h-12 w-auto"
+              className="h-12 w-auto object-contain"
             />
           </button>
 

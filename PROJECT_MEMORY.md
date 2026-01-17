@@ -2,7 +2,27 @@
 
 ## Changelog
 
-### 2025-01-17
+### 2025-01-17 (Part 2)
+**Performance:**
+- Hero background lazy loaded with fade-in (+500-800ms FCP)
+- Interior_3.webp optimized: 107KB → 60KB (-46KB ~43%)
+- Changed preload strategy: hero logo (LCP) instead of background
+- Fixed mobile horizontal scroll (overflow-x: hidden)
+
+**Mobile UX:**
+- Status bar color meta tags added
+  - Android: theme-color #161310 (matches card background)
+  - iOS: black-translucent (overlay, seamless feel)
+  - iOS: fullscreen mode capable
+- Native app-like feel on mobile browsers
+
+**SEO:**
+- Created robots.txt (fixes 66 Lighthouse validation errors)
+
+**Gallery:**
+- Removed zoom hover effect from images
+
+### 2025-01-17 (Part 1)
 **Performance Optimizations:**
 - **LCP**: Hero logo now eager-loaded with `fetchpriority="high"` (removes ~700ms delay)
 - **Images**: Compressed Interior_2.webp (110KB, -39%), logo_2.webp (14KB, -70%)
@@ -276,7 +296,7 @@ Business terms including:
 - `logo.webp` (5.6KB) - Navigation logo
 - `logo_2.webp` (14KB) - Hero section logo (was 47KB, -70%)
 - `Interior_2.webp` (110KB) - About section interior photo (was 180KB, -39%)
-- `Interior_3.webp` (107KB) - Hero background with parallax
+- `Interior_3.webp` (60KB) - Hero background, lazy loaded (was 107KB, -43%)
 - `optimized/` - Directory containing backup of original images
 
 ### Team Photos (Barbers)
@@ -304,16 +324,18 @@ Business terms including:
 
 ## Key Features
 
-1. **Parallax Hero Effect** - Scroll-based background animation
+1. **Parallax Hero Effect** - Scroll-based background animation (desktop only)
 2. **Smooth Scroll Navigation** - With active section highlighting
 3. **Mobile-First Design** - Hamburger menu, floating action buttons
 4. **Floating Action Buttons** - Call/Book buttons that stop at vertical center
-5. **Fade-in Animations** - For visual polish
+5. **Fade-in Animations** - For visual polish, lazy-loaded hero background
 6. **Modal Legal Pages** - Impressum, Datenschutz, AGB
 7. **Click-to-Call** - Phone number integration
 8. **Instagram Integration** - Social media links
 9. **4-Step Booking Wizard** - With validation and confirmation
 10. **Dark Mode First Design** - Luxury aesthetic
+11. **Native App Feel** - Status bar color matching, horizontal scroll prevention
+12. **Dynamic Viewport Height** - No jerky scroll on mobile (dvh units)
 
 ---
 
