@@ -11,6 +11,7 @@ interface HeroProps {
 export function Hero({ onBookNow }: HeroProps) {
   const bgRef = useRef<HTMLDivElement>(null);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const { scrollY } = useScroll();
 
   // Detect desktop on mount and resize
@@ -28,7 +29,7 @@ export function Hero({ onBookNow }: HeroProps) {
   }, [scrollY, isDesktop]);
 
   return (
-    <section className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-background">
       {/* Background Image - Desktop with parallax */}
       <div
         ref={bgRef}
@@ -39,9 +40,9 @@ export function Hero({ onBookNow }: HeroProps) {
           alt="Schiersteiner Barbershop elegant interior with vintage decor and warm ambiance"
           width="1920"
           height="1080"
-          loading="eager"
-          fetchpriority="high"
-          className="w-full h-full object-cover"
+          loading="lazy"
+          className={`w-full h-full object-cover transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setImageLoaded(true)}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background"></div>
       </div>
@@ -52,9 +53,9 @@ export function Hero({ onBookNow }: HeroProps) {
           alt="Schiersteiner Barbershop elegant interior with vintage decor and warm ambiance"
           width="1920"
           height="1080"
-          loading="eager"
-          fetchpriority="high"
-          className="w-full h-full object-cover"
+          loading="lazy"
+          className={`w-full h-full object-cover transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setImageLoaded(true)}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background"></div>
       </div>
