@@ -2,6 +2,19 @@
 
 ## Changelog
 
+### 2025-01-21
+**Bug Fixes:**
+- **Hero Logo Overlap**: Fixed logo overlapping hours badge on smaller/Retina screens
+  - Issue: `justify-center` + absolute logo positioning caused overlap on MacBook 12" (2304x1440)
+  - Fix: Removed `justify-center`, added proper top padding (`pt-16 md:pt-20`)
+  - Reduced logo sizes: 64px → 80px → 96px → 128px (was 80px → 96px → 144px → 176px)
+  - Added spacing: `mb-16 sm:mb-20 md:mb-24` on hours badge
+  - Logo position: `bottom-4` (was `bottom-8`)
+
+**Development:**
+- **Mac Setup**: Configured pnpm on Mac for Windows/Mac consistency
+- **Dependencies**: Clean reinstall with pnpm (removed package-lock.json)
+
 ### 2025-01-17 (Part 2)
 **Performance:**
 - Hero background lazy loaded with fade-in (+500-800ms FCP)

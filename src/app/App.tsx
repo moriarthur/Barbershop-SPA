@@ -10,7 +10,6 @@ import { Footer } from './components/Footer';
 import { Booking } from './components/Booking';
 import { Reviews } from './components/Reviews';
 import { FloatingActionButton } from './components/FloatingActionButton';
-import { PromoBanner } from './components/PromoBanner';
 import { Legal } from './components/Legal';
 
 // Error Boundary for debugging
@@ -200,7 +199,6 @@ export default function App() {
         </ErrorBoundary>
       ) : (
         <>
-          <PromoBanner onBookNow={() => handleNavigate('booking')} />
           <Hero onBookNow={() => handleNavigate('booking')} />
           <About />
           <Services onBookService={handleBookService} />

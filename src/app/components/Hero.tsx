@@ -23,10 +23,25 @@ export function Hero({ onBookNow }: HeroProps) {
     return () => window.removeEventListener('resize', checkDesktop);
   }, []);
 
-  // Fix mobile viewport height - set once to prevent address bar issues
+  // Fix mobile viewport height - handle resize and orientation changes
   useEffect(() => {
     if (isDesktop || !sectionRef.current) return;
-    sectionRef.current.style.height = `${window.innerHeight}px`;
+
+    const setMobileHeight = () => {
+      sectionRef.current!.style.height = `${window.innerHeight}px`;
+    };
+
+    // Set initial height
+    setMobileHeight();
+
+    // Handle resize and orientation changes
+    window.addEventListener('resize', setMobileHeight);
+    window.addEventListener('orientationchange', setMobileHeight);
+
+    return () => {
+      window.removeEventListener('resize', setMobileHeight);
+      window.removeEventListener('orientationchange', setMobileHeight);
+    };
   }, [isDesktop]);
 
   // Only run parallax effect on desktop
@@ -69,7 +84,7 @@ export function Hero({ onBookNow }: HeroProps) {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:pt-20 text-center">
         <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
           {/* Main Heading */}
           <h1
@@ -112,7 +127,7 @@ export function Hero({ onBookNow }: HeroProps) {
           </div>
 
           {/* Hours Badge */}
-          <div>
+          <div className="mb-16 sm:mb-20 md:mb-24">
             <div className="inline-flex flex-col items-center justify-center px-6 py-3 sm:px-8 sm:py-4 bg-card/90 backdrop-blur-md border border-border/50 rounded-xl shadow-lg">
               <div className="text-primary uppercase tracking-wider text-[10px] sm:text-xs mb-1">
                 Öffnungszeiten
@@ -129,8 +144,8 @@ export function Hero({ onBookNow }: HeroProps) {
       </div>
 
       {/* Logo */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none z-10">
-        <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none z-10">
+        <div className="relative w-28 h-28 sm:w-24 sm:h-24 md:w-20 md:h-20 lg:w-24 lg:h-24">
           <img
             src={logo2}
             alt="Schiersteiner Barbershop"
