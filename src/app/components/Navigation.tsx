@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from './ui/button';
-import logo from '../../assets/logo.webp';
+import logo from '../../assets/optimized/logo_nav.png';
 
 interface NavigationProps {
   onNavigate: (section: string) => void;
@@ -91,7 +91,7 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
           >
             <img
               src={logo}
-              alt="Schiersteiner Barbershop Logo"
+              alt="[Ihr Friseursalon Name] Logo"
               className="h-12 w-auto object-contain"
             />
           </button>
@@ -170,12 +170,12 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
               Termin buchen
             </Button>
             <a
-              href="tel:061120779"
+              href="tel:[Ihre Telefonnummer ohne Leerzeichen]"
               className="flex items-center justify-center space-x-2 w-full py-3 text-primary border border-primary rounded-lg hover:bg-primary/10 transition-colors"
               role="menuitem"
             >
               <Phone size={18} />
-              <span>0611-20779</span>
+              <span>[Ihre Telefonnummer]</span>
             </a>
           </div>
         )}

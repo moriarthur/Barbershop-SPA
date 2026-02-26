@@ -30,7 +30,7 @@ export function FloatingActionButton({ onBookNow }: FloatingActionButtonProps) {
 
       {/* Call Button - Desktop only */}
       <a
-        href="tel:061120779"
+        href="tel:[Ihre Telefonnummer ohne Leerzeichen]"
         className="hidden md:flex w-12 h-12 rounded-full bg-primary/90 backdrop-blur-sm items-center justify-center shadow-lg hover:bg-primary transition-all duration-200 hover:scale-105"
         aria-label="Anrufen"
       >

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import interiorImage from '../../assets/optimized/Interior_3.webp';
-import logo2 from '../../assets/logo_2.webp';
+import logo2 from '../../assets/optimized/logo_placaholder.png';
 import { useScroll } from '../hooks/useScroll';
 
 interface HeroProps {
@@ -59,7 +59,7 @@ export function Hero({ onBookNow }: HeroProps) {
       >
         <img
           src={interiorImage}
-          alt="Schiersteiner Barbershop elegant interior with vintage decor and warm ambiance"
+          alt="[Ihr Friseursalon Name] elegantes Interieur mit vintage Dekor und warmem Ambiente"
           width="1920"
           height="1080"
           loading="lazy"
@@ -72,7 +72,7 @@ export function Hero({ onBookNow }: HeroProps) {
       <div className="absolute inset-0 z-0 md:hidden">
         <img
           src={interiorImage}
-          alt="Schiersteiner Barbershop elegant interior with vintage decor and warm ambiance"
+          alt="[Ihr Friseursalon Name] elegantes Interieur mit vintage Dekor und warmem Ambiente"
           width="1920"
           height="1080"
           loading="lazy"
@@ -91,8 +91,8 @@ export function Hero({ onBookNow }: HeroProps) {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight"
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
-            Schiersteiner{' '}
-            <span className="text-primary">Barbershop</span>
+            [Ihr Friseursalon{' '}
+            <span className="text-primary">Name]</span>
           </h1>
 
           {/* Tagline */}
@@ -115,13 +115,13 @@ export function Hero({ onBookNow }: HeroProps) {
             >
               Jetzt Termin buchen
             </Button>
-            <a href="tel:061120779">
+            <a href="tel:[Ihre Telefonnummer ohne Leerzeichen]">
               <Button
                 size="lg"
                 variant="outline"
                 className="w-full sm:w-auto border-primary text-primary hover:bg-primary/10 px-6 py-4 text-base select-none"
               >
-                0611 - 20 779
+                [Ihre Telefonnummer]
               </Button>
             </a>
           </div>
@@ -133,7 +133,7 @@ export function Hero({ onBookNow }: HeroProps) {
                 Öffnungszeiten
               </div>
               <div className="text-foreground font-medium text-base sm:text-lg">
-                MO-SA: 9:00 - 19:00
+                [Ihre Öffnungszeiten Kurzform]
               </div>
               <div className="text-muted-foreground text-xs sm:text-sm">
                 SO: Geschlossen
@@ -148,7 +148,7 @@ export function Hero({ onBookNow }: HeroProps) {
         <div className="relative w-28 h-28 sm:w-24 sm:h-24 md:w-20 md:h-20 lg:w-24 lg:h-24">
           <img
             src={logo2}
-            alt="Schiersteiner Barbershop"
+            alt="[Ihr Friseursalon Name]"
             width="512"
             height="512"
             loading="eager"

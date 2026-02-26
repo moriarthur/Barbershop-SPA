@@ -95,14 +95,9 @@ export function Gallery() {
           <p className="text-foreground/70 mb-4">
             Folgen Sie uns für mehr Einblicke und Inspiration
           </p>
-          <a
-            href="https://instagram.com/Schiersteiner_Barbershop"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors cursor-pointer"
-          >
-            <span>@Schiersteiner_Barbershop →</span>
-          </a>
+          <div className="inline-flex items-center space-x-2 text-muted-foreground">
+            <span>@[Ihr Instagram Handle]</span>
+          </div>
         </div>
       </div>
     </section>

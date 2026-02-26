@@ -16,10 +16,10 @@ export function Legal({ type, onClose }: LegalProps) {
           heading: 'Angaben gemäß § 5 TMG',
           content: (
             <div className="space-y-2">
-              <p>Schiersteiner Barbershop</p>
+              <p>[Ihr Friseursalon Name]</p>
               <p>Inhaber: [Name des Inhabers]</p>
-              <p>Reichsapfelstraße 12</p>
-              <p>65201 Wiesbaden</p>
+              <p>[Ihre Straße Hausnummer]</p>
+              <p>[Ihre Postleitzahl] [Ihr Ort]</p>
             </div>
           ),
         },
@@ -27,8 +27,8 @@ export function Legal({ type, onClose }: LegalProps) {
           heading: 'Kontakt',
           content: (
             <div className="space-y-2">
-              <p>Telefon: 0611 - 20 779</p>
-              <p>E-Mail: info@schiersteiner-barbershop.de</p>
+              <p>Telefon: [Ihre Telefonnummer]</p>
+              <p>E-Mail: [Ihre E-Mail-Adresse]</p>
             </div>
           ),
         },
@@ -115,7 +115,7 @@ export function Legal({ type, onClose }: LegalProps) {
       sections: [
         {
           heading: 'Geltungsbereich',
-          content: <p>Folgende Allgemeine Geschäftsbedingungen (AGB) gelten für alle Dienstleistungen, die der Schiersteiner Barbershop erbringt.</p>,
+          content: <p>Folgende Allgemeine Geschäftsbedingungen (AGB) gelten für alle Dienstleistungen, die der [Ihr Friseursalon Name] erbringt.</p>,
         },
         {
           heading: 'Terminvereinbarung',

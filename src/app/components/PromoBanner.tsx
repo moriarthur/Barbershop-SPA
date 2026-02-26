@@ -21,7 +21,7 @@ export function PromoBanner({ onBookNow }: PromoBannerProps) {
             </div>
             <div className="flex-1">
               <p className="text-primary-foreground text-sm sm:text-base">
-                <span className="font-semibold">Neujahrs-Special:</span> Jetzt bis zu 25% sparen auf ausgewählte Services
+                <span className="font-semibold">[Ihr Aktionsangebot]:</span> [Ihr Aktionsbeschreibung]
               </p>
             </div>
           </div>

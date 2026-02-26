@@ -48,8 +48,8 @@ export function About() {
             </h2>
             <div className="space-y-4 text-foreground/80 leading-relaxed">
               <p>
-                Willkommen im Schiersteiner Barbershop – Ihrem Premium-Salon für klassisches
-                Barbier-Handwerk im Herzen von Wiesbaden-Schierstein.
+                Willkommen im [Ihr Friseursalon Name] – Ihrem Premium-Salon für klassisches
+                Barbier-Handwerk im Herzen von [Ihr Standort].
               </p>
               <p>
                 Seit Jahren steht unser Name für exzellente Schnitte, professionelle Bartpflege
@@ -72,7 +72,7 @@ export function About() {
             <div className="aspect-[4/5] rounded-lg overflow-hidden">
               <img
                 src={interiorImage}
-                alt="Schiersteiner Barbershop Interior"
+                alt="[Ihr Friseursalon Name] Interieur"
                 width="1200"
                 height="1500"
                 loading="lazy"
