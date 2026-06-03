@@ -1,6 +1,5 @@
-import React from 'react';
-import { Instagram, Facebook, Phone, MapPin, ChevronUp } from 'lucide-react';
-import logo2 from '../../assets/optimized/logo_placaholder.png';
+import { Phone, MapPin, ChevronUp } from 'lucide-react';
+import logoSvg from '../../assets/optimized/barbershop-logo.svg';
 import githubMark from '../../assets/github-mark.svg';
 
 interface FooterProps {
@@ -21,7 +20,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
             >
               <ChevronUp className="text-primary animate-bounce md:hidden" size={24} />
               <img
-                src={logo2}
+                src={logoSvg}
                 alt="Barbershop"
                 loading="lazy"
                 className="w-28 h-28 object-contain"
@@ -90,16 +89,16 @@ export function Footer({ onOpenLegal }: FooterProps) {
                   aria-label="Besuchen Sie uns auf Instagram"
                   className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
                 >
-                  <Instagram className="text-primary" size={18} />
+                  <svg className="text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                 </a>
                 <a
-                  href="https://www.facebook.com/people/Barbershop-Barbershop/pfbid025iAjKc2YozoKGvXb3ui2SJzdeDXnNzNhJT8qDzS4BbCkjWKZCJSu7ErNcdJaJPn8l/"
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Besuchen Sie uns auf Facebook"
                   className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
                 >
-                  <Facebook className="text-primary" size={18} />
+                  <svg className="text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                 </a>
               </li>
             </ul>

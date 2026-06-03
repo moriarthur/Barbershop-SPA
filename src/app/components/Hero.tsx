@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import interiorImage from '../../assets/optimized/Interior_3.webp';
-import logo2 from '../../assets/optimized/logo_placaholder.png';
+import heroLogo from '../../assets/optimized/barbershop-logo.png';
 import { useScroll } from '../hooks/useScroll';
 
 interface HeroProps {
@@ -132,7 +132,7 @@ export function Hero({ onBookNow }: HeroProps) {
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none z-10">
         <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44">
           <img
-            src={logo2}
+            src={heroLogo}
             alt="Barbershop"
             width="512"
             height="512"

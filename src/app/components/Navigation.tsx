@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from './ui/button';
-import logo from '../../assets/optimized/logo_placaholder.png';
+import logoSvg from '../../assets/optimized/barbershop-logo.svg';
 
 interface NavigationProps {
   onNavigate: (section: string) => void;
@@ -90,7 +90,7 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
             aria-label="Zur Startseite"
           >
             <img
-              src={logo}
+              src={logoSvg}
               alt="Barbershop Logo"
               className="h-12 w-auto object-contain"
             />
