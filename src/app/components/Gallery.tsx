@@ -95,9 +95,14 @@ export function Gallery() {
           <p className="text-foreground/70 mb-4">
             Folgen Sie uns für mehr Einblicke und Inspiration
           </p>
-          <div className="inline-flex items-center space-x-2 text-muted-foreground">
-            <span>@[Ihr Instagram Handle]</span>
-          </div>
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors cursor-pointer"
+          >
+            <span>@barbershop.spa →</span>
+          </a>
         </div>
       </div>
     </section>

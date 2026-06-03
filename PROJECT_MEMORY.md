@@ -2,18 +2,19 @@
 
 ## Changelog
 
-### 2025-01-21
-**Bug Fixes:**
-- **Hero Logo Overlap**: Fixed logo overlapping hours badge on smaller/Retina screens
-  - Issue: `justify-center` + absolute logo positioning caused overlap on MacBook 12" (2304x1440)
-  - Fix: Removed `justify-center`, added proper top padding (`pt-16 md:pt-20`)
-  - Reduced logo sizes: 64px → 80px → 96px → 128px (was 80px → 96px → 144px → 176px)
-  - Added spacing: `mb-16 sm:mb-20 md:mb-24` on hours badge
-  - Logo position: `bottom-4` (was `bottom-8`)
+### 2025-01-17 (Part 3 - Final)
+**Mobile Scroll Fix:**
+- Fixed iOS address bar zoom/move issue with JavaScript viewport height
+- Hero section uses fixed pixel height on mobile (window.innerHeight)
+- Prevents background zooming and logo movement during scroll
 
-**Development:**
-- **Mac Setup**: Configured pnpm on Mac for Windows/Mac consistency
-- **Dependencies**: Clean reinstall with pnpm (removed package-lock.json)
+**Hero Visual:**
+- Added blur-sm effect to background image
+- Mobile has GPU acceleration (translateZ(0))
+
+**Navigation:**
+- Updated to higher quality logo (14.7KB)
+- Size adjusted to h-12 (48px)
 
 ### 2025-01-17 (Part 2)
 **Performance:**
@@ -306,7 +307,7 @@ Business terms including:
 ## Assets
 
 ### Images (optimized 2025-01-17)
-- `logo.webp` (5.6KB) - Navigation logo
+- `logo.webp` (14.7KB) - Navigation logo (high quality, updated P3)
 - `logo_2.webp` (14KB) - Hero section logo (was 47KB, -70%)
 - `Interior_2.webp` (110KB) - About section interior photo (was 180KB, -39%)
 - `Interior_3.webp` (60KB) - Hero background, lazy loaded (was 107KB, -43%)

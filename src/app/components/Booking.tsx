@@ -71,29 +71,29 @@ const barbers: Barber[] = [
 ];
 
 const gentlemenServices: Service[] = [
-  { name: '[Herren Service Name 1]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Herren Service Name 2]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Herren Service Name 3]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Herren Service Name 4]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Herren Service Name 5]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Herren Service Name 6]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Herren Service Name 7]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Herren Service Name 8]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Herren Service Name 9]', description: '[Optionale Beschreibung]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Herren Service Name 10]', description: '[Optionale Beschreibung]', price: '[Preis]€', duration: '[Dauer]' },
+  { name: 'Trockenhaarschnitt', price: '18€', duration: '30 Min' },
+  { name: 'Waschen, Schneiden, Föhnen & Stylen', price: '20€', duration: '45 Min' },
+  { name: 'Schneiden, Rasieren, Föhnen & Stylen', price: '30€', duration: '60 Min' },
+  { name: 'Bartformrasur / Nassrasur', price: '15€', duration: '30 Min' },
+  { name: 'Kinder bis 12 Jahre', price: '15€', duration: '30 Min' },
+  { name: 'Augenbrauen zupfen', price: '12€', duration: '15 Min' },
+  { name: 'Heißwachs Ohren u. Nase', price: '8€', duration: '15 Min' },
+  { name: 'Kopfmassage', price: '15€', duration: '20 Min' },
+  { name: 'Gesichtskur', description: 'Maske, Dampfbad, Massage', price: '20€', duration: '30 Min' },
+  { name: 'Premium-Paket', description: 'Waschen, Schneiden, Bartrasur, Augenbrauen zupfen, Föhnen & Stylen', price: '40€', duration: '90 Min' },
 ];
 
 const ladiesServices: Service[] = [
-  { name: '[Damen Service Name 1]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Damen Service Name 2]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Damen Service Name 3]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Damen Service Name 4]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Damen Service Name 5]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Damen Service Name 6]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Damen Service Name 7]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Damen Service Name 8]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Damen Service Name 9]', description: '[Optionale Beschreibung]', price: '[Preis]€', duration: '[Dauer]' },
-  { name: '[Damen Service Name 10]', description: '[Optionale Beschreibung]', price: '[Preis]€', duration: '[Dauer]' },
+  { name: 'Waschen/Föhnen', price: 'ab 21€', duration: '30 Min' },
+  { name: 'Waschen/Schneiden/Föhnen', price: 'ab 36,75€', duration: '60 Min' },
+  { name: 'Coloration', price: 'ab 31,50€', duration: '90 Min' },
+  { name: 'Gloss', price: 'ab 20,25€', duration: '45 Min' },
+  { name: 'Neufärbung', price: 'ab 35,25€', duration: '90 Min' },
+  { name: 'Effektsträhnen', price: 'ab 21,75€', duration: '60 Min' },
+  { name: 'Strähnen am Oberkopf', price: 'ab 33€', duration: '75 Min' },
+  { name: 'Strähnen komplett', price: 'ab 44,25€', duration: '120 Min' },
+  { name: 'Balayage (mittellänges Haar)', description: 'inkl. Pflege und Gloss', price: 'ab 105€', duration: '150 Min' },
+  { name: 'Balayage (langes Haar)', description: 'inkl. Pflege und Gloss', price: 'ab 120€', duration: '180 Min' },
 ];
 
 const generateTimeSlots = () => {
@@ -452,7 +452,7 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
                 >
                   <img
                     src={barber.image}
-                    alt={`${barber.name} - ${barber.role} bei [Ihr Friseursalon Name]`}
+                    alt={`${barber.name} - ${barber.role} at Barbershop`}
                     className="w-full h-64 object-cover object-top"
                   />
                   <div className="p-3">

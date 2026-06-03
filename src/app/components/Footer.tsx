@@ -1,6 +1,6 @@
 import React from 'react';
 import { Instagram, Facebook, Phone, MapPin, ChevronUp } from 'lucide-react';
-import logo2 from '../../assets/optimized/logo_placaholder.png';
+import logo2 from '../../assets/logo_2.webp';
 import githubMark from '../../assets/github-mark.svg';
 
 interface FooterProps {
@@ -22,19 +22,19 @@ export function Footer({ onOpenLegal }: FooterProps) {
               <ChevronUp className="text-primary animate-bounce md:hidden" size={24} />
               <img
                 src={logo2}
-                alt="[Ihr Friseursalon Name]"
+                alt="Barbershop"
                 loading="lazy"
                 className="w-28 h-28 object-contain"
               />
               <div className="text-center md:text-left">
-                <div className="tracking-wider select-none" style={{ fontSize: '1.25rem', fontFamily: 'Playfair Display, serif' }}>[Ihr Friseursalon</div>
-                <div className="text-primary text-foreground select-none" style={{ fontSize: '1.25rem', fontFamily: 'Playfair Display, serif' }}>Name]</div>
+                <div className="tracking-wider select-none" style={{ fontSize: '1.25rem', fontFamily: 'Playfair Display, serif' }}>Barbershop</div>
+                <div className="text-primary text-foreground select-none" style={{ fontSize: '1.25rem', fontFamily: 'Playfair Display, serif' }}>Barbershop</div>
               </div>
               <ChevronUp className="text-primary animate-bounce hidden md:block" size={24} />
             </button>
             <p className="text-foreground/70 text-sm max-w-md mb-4 mx-auto md:mx-0">
               Klassisches Barbier-Handwerk in stilvollem Ambiente.
-              For Ladies & Gentlemen – seit Jahren Ihre Adresse für perfekte Schnitte in [Ihr Ort].
+              For Ladies & Gentlemen – seit Jahren Ihre Adresse für perfekte Schnitte in Wiesbaden.
             </p>
           </div>
 
@@ -72,29 +72,35 @@ export function Footer({ onOpenLegal }: FooterProps) {
               <li className="flex items-start justify-center md:justify-start space-x-2">
                 <MapPin size={16} className="text-primary mt-1 flex-shrink-0" />
                 <span className="text-foreground/70">
-                  [Ihre Straße Hausnummer]<br />
-                  [Ihre Postleitzahl] [Ihr Ort]
+                  Reichsapfelstraße 12<br />
+                  65201 Wiesbaden
                 </span>
               </li>
               <li className="flex items-center justify-center md:justify-start space-x-2">
                 <Phone size={16} className="text-primary flex-shrink-0" />
-                <a href="tel:[Ihre Telefonnummer ohne Leerzeichen]" className="text-foreground/70 hover:text-primary transition-colors">
-                  [Ihre Telefonnummer]
+                <a href="tel:061120779" className="text-foreground/70 hover:text-primary transition-colors">
+                  0611 - 20 779
                 </a>
               </li>
               <li className="flex justify-center md:justify-start space-x-3 pt-2">
-                <div
-                  aria-label="Instagram"
-                  className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center opacity-50"
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Besuchen Sie uns auf Instagram"
+                  className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
                 >
                   <Instagram className="text-primary" size={18} />
-                </div>
-                <div
-                  aria-label="Facebook"
-                  className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center opacity-50"
+                </a>
+                <a
+                  href="https://www.facebook.com/people/Barbershop-Barbershop/pfbid025iAjKc2YozoKGvXb3ui2SJzdeDXnNzNhJT8qDzS4BbCkjWKZCJSu7ErNcdJaJPn8l/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Besuchen Sie uns auf Facebook"
+                  className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
                 >
                   <Facebook className="text-primary" size={18} />
-                </div>
+                </a>
               </li>
             </ul>
           </div>
@@ -104,7 +110,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
         <div className="pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-center md:text-left">
             <p className="text-sm text-muted-foreground select-none">
-              © 2026 [Ihr Friseursalon Name]. Alle Rechte vorbehalten.
+              © 2026 Barbershop. Alle Rechte vorbehalten.
             </p>
             <div className="flex justify-center md:justify-start space-x-6 text-sm">
               <button

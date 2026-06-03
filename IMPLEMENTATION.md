@@ -2,18 +2,19 @@
 
 ## Changelog
 
-### 2025-01-21
-**Bug Fixes:**
-- **Hero Logo Overlap**: Fixed logo overlapping with hours badge on smaller screens (MacBook 12", Retina displays)
-  - Removed `justify-center` from Hero section to prevent vertical centering overlap
-  - Reduced logo sizes: `w-16 h-16` (mobile) → `sm:w-20 h-20` → `md:w-24 h-24` → `lg:w-32 h-32` (large)
-  - Added `mb-16 sm:mb-20 md:mb-24` to hours badge container for spacing
-  - Changed logo position from `bottom-8` to `bottom-4`
-  - Added `pt-16 md:pt-20` to content for proper top spacing
+### 2025-01-17 (Part 3 - Final)
+**Mobile Scroll Fix:**
+- **Hero Section**: Fixed iOS address bar zoom/move issue with JavaScript viewport fix
+- Uses `window.innerHeight` to set fixed pixel height on mobile (prevents address bar collapse from affecting layout)
+- Desktop keeps `min-h-[100dvh]` for parallax effect
 
-**Development:**
-- **Mac Support**: Set up pnpm on Mac for cross-platform development consistency
-- **Dependencies**: Reinstalled with pnpm (removed package-lock.json, kept pnpm-lock.yaml)
+**Hero Visual:**
+- **Background Blur**: Added `blur-sm` effect to background image
+- Mobile has `translateZ(0)` for GPU acceleration
+
+**Navigation:**
+- **Logo**: Updated to higher quality version (14.7KB)
+- **Size**: Adjusted to `h-12` (48px) for proper fit
 
 ### 2025-01-17 (Part 2)
 **Performance:**
@@ -379,15 +380,26 @@ const sections = ['home', 'about', 'services', 'barbers', 'gallery', 'contact'];
 ### Hero.tsx
 
 **Features:**
-- Parallax scroll effect on background image
+- Parallax scroll effect on background image (desktop only)
 - Bottom-center positioned logo_2
 - CTA buttons (Book Now, Call)
 - Responsive layout
+- Background blur effect (`blur-sm`)
 
 **Key Elements:**
-- Background: `Interior_3.webp`
-- Logo: `logo_2.png`
-- Animation: Parallax on scroll
+- Background: `Interior_3.webp` (60KB, lazy loaded)
+- Logo: `logo_2.webp` (14KB, eager loaded as LCP)
+- Animation: Parallax on scroll (desktop)
+- Mobile: Fixed pixel height using `window.innerHeight` (prevents iOS address bar zoom issue)
+
+**Mobile Scroll Fix:**
+```typescript
+useEffect(() => {
+  if (isDesktop || !sectionRef.current) return;
+  sectionRef.current.style.height = `${window.innerHeight}px`;
+}, [isDesktop]);
+```
+This prevents the iOS address bar collapse from affecting the hero section height.
 
 ---
 
@@ -688,6 +700,16 @@ format(date, 'PPP', { locale: de })
 - **Android**: `theme-color` meta tag sets status bar to `#161310`
 - **iOS**: `black-translucent` makes status bar overlay transparently
 - Result: Seamless native app feel on mobile browsers
+
+### Hero Scroll Zoom Fix (iOS Safari)
+```typescript
+// Fixed pixel height prevents address bar collapse issues
+useEffect(() => {
+  if (isDesktop || !sectionRef.current) return;
+  sectionRef.current.style.height = `${window.innerHeight}px`;
+}, [isDesktop]);
+```
+Prevents background zooming and logo movement when scrolling on iOS.
 
 ### Horizontal Scroll Prevention
 ```css

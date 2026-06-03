@@ -22,7 +22,7 @@ export function Contact() {
             Kontakt & Standort
           </h2>
           <p className="text-foreground/70 max-w-2xl mx-auto">
-            Besuchen Sie uns in [Ihr Standort]. Wir freuen uns auf Sie!
+            Besuchen Sie uns in Wiesbaden. Wir freuen uns auf Sie!
           </p>
         </div>
 
@@ -37,11 +37,11 @@ export function Contact() {
                 <div>
                   <h3 className="text-foreground mb-2">Adresse</h3>
                   <p className="text-foreground/70">
-                    [Ihre Straße Hausnummer]<br />
-                    [Ihre Postleitzahl] [Ihr Ort]
+                    Reichsapfelstraße 12<br />
+                    65201 Wiesbaden
                   </p>
                   <a
-                    href="https://maps.google.com/?q=[Ihre Adresse für Google Maps]"
+                    href="https://maps.google.com/?q=Reichsapfelstraße+12,+65201+Wiesbaden"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary hover:text-primary/80 text-sm mt-2 inline-block"
@@ -60,10 +60,10 @@ export function Contact() {
                 <div>
                   <h3 className="text-foreground mb-2">Telefon</h3>
                   <a
-                    href="tel:[Ihre Telefonnummer ohne Leerzeichen]"
+                    href="tel:061120779"
                     className="text-primary hover:text-primary/80 text-lg"
                   >
-                    [Ihre Telefonnummer]
+                    0611 - 20 779
                   </a>
                   <p className="text-foreground/70 text-sm mt-2">
                     Rufen Sie uns an für eine Terminvereinbarung
@@ -81,8 +81,8 @@ export function Contact() {
                   <h3 className="text-foreground mb-3">Öffnungszeiten</h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-foreground/70">[Ihre Öffnungstage]</span>
-                      <span className="text-foreground">[Ihre Öffnungszeiten]</span>
+                      <span className="text-foreground/70">Montag - Samstag</span>
+                      <span className="text-foreground">9:00 - 19:00</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-foreground/70">Sonntag</span>
@@ -100,18 +100,24 @@ export function Contact() {
             <Card className="bg-card border-border p-6">
               <h3 className="text-foreground mb-4">Folgen Sie uns</h3>
               <div className="flex space-x-4">
-                <div
-                  aria-label="Instagram"
-                  className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center opacity-50"
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Besuchen Sie uns auf Instagram"
+                  className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
                 >
                   <Instagram className="text-primary" size={20} />
-                </div>
-                <div
-                  aria-label="Facebook"
-                  className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center opacity-50"
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Besuchen Sie uns auf Facebook"
+                  className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
                 >
                   <Facebook className="text-primary" size={20} />
-                </div>
+                </a>
               </div>
             </Card>
           </div>
@@ -119,14 +125,14 @@ export function Contact() {
           {/* Map */}
           <Card className="bg-card border-border overflow-hidden h-[600px]">
             <iframe
-              src="https://maps.google.com/maps?q=[Ihre Adresse für Google Maps Embed]&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=Reichsapfelstra%C3%9Fe+12,+65201+Wiesbaden&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="[Ihr Friseursalon Name] Standort"
+              title="Barbershop Location"
             ></iframe>
           </Card>
         </div>

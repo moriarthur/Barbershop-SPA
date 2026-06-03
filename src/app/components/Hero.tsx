@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import interiorImage from '../../assets/optimized/Interior_3.webp';
-import logo2 from '../../assets/optimized/logo_placaholder.png';
+import logo2 from '../../assets/logo_2.webp';
 import { useScroll } from '../hooks/useScroll';
 
 interface HeroProps {
@@ -23,25 +23,10 @@ export function Hero({ onBookNow }: HeroProps) {
     return () => window.removeEventListener('resize', checkDesktop);
   }, []);
 
-  // Fix mobile viewport height - handle resize and orientation changes
+  // Fix mobile viewport height - set once to prevent address bar issues
   useEffect(() => {
     if (isDesktop || !sectionRef.current) return;
-
-    const setMobileHeight = () => {
-      sectionRef.current!.style.height = `${window.innerHeight}px`;
-    };
-
-    // Set initial height
-    setMobileHeight();
-
-    // Handle resize and orientation changes
-    window.addEventListener('resize', setMobileHeight);
-    window.addEventListener('orientationchange', setMobileHeight);
-
-    return () => {
-      window.removeEventListener('resize', setMobileHeight);
-      window.removeEventListener('orientationchange', setMobileHeight);
-    };
+    sectionRef.current.style.height = `${window.innerHeight}px`;
   }, [isDesktop]);
 
   // Only run parallax effect on desktop
@@ -59,7 +44,7 @@ export function Hero({ onBookNow }: HeroProps) {
       >
         <img
           src={interiorImage}
-          alt="[Ihr Friseursalon Name] elegantes Interieur mit vintage Dekor und warmem Ambiente"
+          alt="Barbershop elegant interior with vintage decor and warm ambiance"
           width="1920"
           height="1080"
           loading="lazy"
@@ -72,7 +57,7 @@ export function Hero({ onBookNow }: HeroProps) {
       <div className="absolute inset-0 z-0 md:hidden">
         <img
           src={interiorImage}
-          alt="[Ihr Friseursalon Name] elegantes Interieur mit vintage Dekor und warmem Ambiente"
+          alt="Barbershop elegant interior with vintage decor and warm ambiance"
           width="1920"
           height="1080"
           loading="lazy"
@@ -84,15 +69,15 @@ export function Hero({ onBookNow }: HeroProps) {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:pt-20 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
         <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
           {/* Main Heading */}
           <h1
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight"
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
-            [Ihr Friseursalon{' '}
-            <span className="text-primary">Name]</span>
+            Barbershop{' '}
+            <span className="text-primary">Barbershop</span>
           </h1>
 
           {/* Tagline */}
@@ -115,25 +100,25 @@ export function Hero({ onBookNow }: HeroProps) {
             >
               Jetzt Termin buchen
             </Button>
-            <a href="tel:[Ihre Telefonnummer ohne Leerzeichen]">
+            <a href="tel:061120779">
               <Button
                 size="lg"
                 variant="outline"
                 className="w-full sm:w-auto border-primary text-primary hover:bg-primary/10 px-6 py-4 text-base select-none"
               >
-                [Ihre Telefonnummer]
+                0611 - 20 779
               </Button>
             </a>
           </div>
 
           {/* Hours Badge */}
-          <div className="mb-16 sm:mb-20 md:mb-24">
+          <div>
             <div className="inline-flex flex-col items-center justify-center px-6 py-3 sm:px-8 sm:py-4 bg-card/90 backdrop-blur-md border border-border/50 rounded-xl shadow-lg">
               <div className="text-primary uppercase tracking-wider text-[10px] sm:text-xs mb-1">
                 Öffnungszeiten
               </div>
               <div className="text-foreground font-medium text-base sm:text-lg">
-                [Ihre Öffnungszeiten Kurzform]
+                MO-SA: 9:00 - 19:00
               </div>
               <div className="text-muted-foreground text-xs sm:text-sm">
                 SO: Geschlossen
@@ -144,11 +129,11 @@ export function Hero({ onBookNow }: HeroProps) {
       </div>
 
       {/* Logo */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none z-10">
-        <div className="relative w-28 h-28 sm:w-24 sm:h-24 md:w-20 md:h-20 lg:w-24 lg:h-24">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none z-10">
+        <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44">
           <img
             src={logo2}
-            alt="[Ihr Friseursalon Name]"
+            alt="Barbershop"
             width="512"
             height="512"
             loading="eager"

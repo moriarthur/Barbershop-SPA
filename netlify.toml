@@ -1,4 +1,4 @@
-# Netlify configuration for Schiersteiner Barbershop
+# Netlify configuration for Barbershop SPA
 
 [build]
   command = "pnpm build"
