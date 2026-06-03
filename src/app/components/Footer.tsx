@@ -1,6 +1,6 @@
 import React from 'react';
 import { Instagram, Facebook, Phone, MapPin, ChevronUp } from 'lucide-react';
-import logo2 from '../../assets/logo_2.webp';
+import logo2 from '../../assets/optimized/logo_placaholder.png';
 import githubMark from '../../assets/github-mark.svg';
 
 interface FooterProps {
@@ -40,7 +40,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
 
           {/* Quick Links */}
           <div className="text-center md:text-left">
-            <div className="text-foreground mb-4 font-medium" role="heading" aria-level="2">Schnellzugriff</div>
+            <div className="text-foreground mb-4 font-medium" role="heading" aria-level={2}>Schnellzugriff</div>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="#services" className="text-foreground/70 hover:text-primary transition-colors">
@@ -67,7 +67,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
 
           {/* Contact */}
           <div className="text-center md:text-left">
-            <div className="text-foreground mb-4 font-medium" role="heading" aria-level="2">Kontakt</div>
+            <div className="text-foreground mb-4 font-medium" role="heading" aria-level={2}>Kontakt</div>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start justify-center md:justify-start space-x-2">
                 <MapPin size={16} className="text-primary mt-1 flex-shrink-0" />

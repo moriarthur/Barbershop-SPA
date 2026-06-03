@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from './ui/button';
-import logo from '../../assets/logo.webp';
+import logo from '../../assets/optimized/logo_placaholder.png';
 
 interface NavigationProps {
   onNavigate: (section: string) => void;

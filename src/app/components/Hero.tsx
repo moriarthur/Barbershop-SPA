@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import interiorImage from '../../assets/optimized/Interior_3.webp';
-import logo2 from '../../assets/logo_2.webp';
+import logo2 from '../../assets/optimized/logo_placaholder.png';
 import { useScroll } from '../hooks/useScroll';
 
 interface HeroProps {
@@ -137,7 +137,7 @@ export function Hero({ onBookNow }: HeroProps) {
             width="512"
             height="512"
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
             className="w-full h-full object-contain drop-shadow-2xl"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent blur-md rounded-full"></div>
