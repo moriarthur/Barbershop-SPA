@@ -100,13 +100,13 @@ export function Hero({ onBookNow }: HeroProps) {
             >
               Jetzt Termin buchen
             </Button>
-            <a href="tel:061120779">
+            <a href="tel:+491234567890">
               <Button
                 size="lg"
                 variant="outline"
                 className="w-full sm:w-auto border-primary text-primary hover:bg-primary/10 px-6 py-4 text-base select-none"
               >
-                0611 - 20 779
+                +49 123 4567890
               </Button>
             </a>
           </div>

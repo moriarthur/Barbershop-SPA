@@ -170,12 +170,12 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
               Termin buchen
             </Button>
             <a
-              href="tel:061120779"
+              href="tel:+491234567890"
               className="flex items-center justify-center space-x-2 w-full py-3 text-primary border border-primary rounded-lg hover:bg-primary/10 transition-colors"
               role="menuitem"
             >
               <Phone size={18} />
-              <span>0611-20779</span>
+              <span>+49-123-4567890</span>
             </a>
           </div>
         )}

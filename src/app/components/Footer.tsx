@@ -71,14 +71,14 @@ export function Footer({ onOpenLegal }: FooterProps) {
               <li className="flex items-start justify-center md:justify-start space-x-2">
                 <MapPin size={16} className="text-primary mt-1 flex-shrink-0" />
                 <span className="text-foreground/70">
-                  Reichsapfelstraße 12<br />
-                  65201 Wiesbaden
+                  Musterstraße 42<br />
+                  12345 Musterstadt
                 </span>
               </li>
               <li className="flex items-center justify-center md:justify-start space-x-2">
                 <Phone size={16} className="text-primary flex-shrink-0" />
-                <a href="tel:061120779" className="text-foreground/70 hover:text-primary transition-colors">
-                  0611 - 20 779
+                <a href="tel:+491234567890" className="text-foreground/70 hover:text-primary transition-colors">
+                  +49 123 4567890
                 </a>
               </li>
               <li className="flex justify-center md:justify-start space-x-3 pt-2">

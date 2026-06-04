@@ -18,8 +18,8 @@ export function Legal({ type, onClose }: LegalProps) {
             <div className="space-y-2">
               <p>Barbershop</p>
               <p>Inhaber: [Name des Inhabers]</p>
-              <p>Reichsapfelstraße 12</p>
-              <p>65201 Wiesbaden</p>
+              <p>Musterstraße 42</p>
+              <p>12345 Musterstadt</p>
             </div>
           ),
         },
@@ -27,7 +27,7 @@ export function Legal({ type, onClose }: LegalProps) {
           heading: 'Kontakt',
           content: (
             <div className="space-y-2">
-              <p>Telefon: 0611 - 20 779</p>
+              <p>Telefon: +49 123 4567890</p>
               <p>E-Mail: info@schiersteiner-barbershop.de</p>
             </div>
           ),

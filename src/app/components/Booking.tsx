@@ -552,7 +552,7 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
                       type="tel"
                       value={customerPhone}
                       onChange={(e) => handleInputChange('phone', e.target.value)}
-                      placeholder="0611 12345678"
+                      placeholder="0123 4567890"
                       className={`bg-input-background ${errors.phone ? 'border-destructive' : 'border-border'}`}
                     />
                     {errors.phone && (
