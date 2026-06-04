@@ -4,7 +4,7 @@
 
 ### Mobile-First Barbershop Template with Booking System
 
-**[🌐 Live Demo](https://barbershop-demo.netlify.app)**
+**[🌐 Live Demo](https://barbershop-spa.netlify.app)**
 
 [![React](https://img.shields.io/badge/React_18-61DAFB?style=flat&logo=react&logoColor=black)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://typescriptlang.org)
