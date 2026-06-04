@@ -31,6 +31,8 @@ interface Barber {
 
 interface Service {
   name: string;
+  price: string;
+  duration: string;
   description?: string;
 }
 
@@ -69,29 +71,29 @@ const barbers: Barber[] = [
 ];
 
 const gentlemenServices: Service[] = [
-  { name: 'Trockenhaarschnitt' },
-  { name: 'Waschen, Schneiden, Föhnen & Stylen' },
-  { name: 'Schneiden, Rasieren, Föhnen & Stylen' },
-  { name: 'Bartformrasur / Nassrasur' },
-  { name: 'Kinder bis 12 Jahre' },
-  { name: 'Augenbrauen zupfen' },
-  { name: 'Heißwachs Ohren u. Nase' },
-  { name: 'Kopfmassage' },
-  { name: 'Gesichtskur', description: 'Maske, Dampfbad, Massage' },
-  { name: 'Premium-Paket', description: 'Waschen, Schneiden, Bartrasur, Augenbrauen zupfen, Föhnen & Stylen' },
+  { name: 'Trockenhaarschnitt', price: '25€', duration: '30 Min' },
+  { name: 'Waschen, Schneiden, Föhnen & Stylen', price: '35€', duration: '45 Min' },
+  { name: 'Schneiden, Rasieren, Föhnen & Stylen', price: '45€', duration: '60 Min' },
+  { name: 'Bartformrasur / Nassrasur', price: '20€', duration: '30 Min' },
+  { name: 'Kinder bis 12 Jahre', price: '18€', duration: '30 Min' },
+  { name: 'Augenbrauen zupfen', price: '12€', duration: '15 Min' },
+  { name: 'Heißwachs Ohren u. Nase', price: '10€', duration: '15 Min' },
+  { name: 'Kopfmassage', price: '20€', duration: '20 Min' },
+  { name: 'Gesichtskur', description: 'Maske, Dampfbad, Massage', price: '30€', duration: '30 Min' },
+  { name: 'Premium-Paket', description: 'Waschen, Schneiden, Bartrasur, Augenbrauen zupfen, Föhnen & Stylen', price: '65€', duration: '90 Min' },
 ];
 
 const ladiesServices: Service[] = [
-  { name: 'Waschen/Föhnen' },
-  { name: 'Waschen/Schneiden/Föhnen' },
-  { name: 'Coloration' },
-  { name: 'Gloss' },
-  { name: 'Neufärbung' },
-  { name: 'Effektsträhnen' },
-  { name: 'Strähnen am Oberkopf' },
-  { name: 'Strähnen komplett' },
-  { name: 'Balayage (mittellänges Haar)', description: 'inkl. Pflege und Gloss' },
-  { name: 'Balayage (langes Haar)', description: 'inkl. Pflege und Gloss' },
+  { name: 'Waschen/Föhnen', price: 'ab 30€', duration: '30 Min' },
+  { name: 'Waschen/Schneiden/Föhnen', price: 'ab 50€', duration: '60 Min' },
+  { name: 'Coloration', price: 'ab 55€', duration: '90 Min' },
+  { name: 'Gloss', price: 'ab 35€', duration: '45 Min' },
+  { name: 'Neufärbung', price: 'ab 60€', duration: '90 Min' },
+  { name: 'Effektsträhnen', price: 'ab 45€', duration: '60 Min' },
+  { name: 'Strähnen am Oberkopf', price: 'ab 55€', duration: '75 Min' },
+  { name: 'Strähnen komplett', price: 'ab 75€', duration: '120 Min' },
+  { name: 'Balayage (mittellänges Haar)', description: 'inkl. Pflege und Gloss', price: 'ab 120€', duration: '150 Min' },
+  { name: 'Balayage (langes Haar)', description: 'inkl. Pflege und Gloss', price: 'ab 150€', duration: '180 Min' },
 ];
 
 const generateTimeSlots = () => {
@@ -369,8 +371,12 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
                       className="bg-card border-border hover:border-primary cursor-pointer transition-colors p-6"
                     >
                       <h3 className="text-foreground mb-2">{service.name}</h3>
+                      <div className="flex justify-between items-center">
+                        <span className="text-primary">{service.price}</span>
+                        <span className="text-sm text-muted-foreground">{service.duration}</span>
+                      </div>
                       {service.description && (
-                        <p className="text-sm text-muted-foreground">{service.description}</p>
+                        <p className="text-sm text-muted-foreground mt-2">{service.description}</p>
                       )}
                     </Card>
                   ))}
@@ -385,6 +391,10 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
                       className="bg-card border-border hover:border-primary cursor-pointer transition-colors p-6"
                     >
                       <h3 className="text-foreground mb-2">{service.name}</h3>
+                      <div className="flex justify-between items-center">
+                        <span className="text-primary">{service.price}</span>
+                        <span className="text-sm text-muted-foreground">{service.duration}</span>
+                      </div>
                       {service.description && (
                         <p className="text-sm text-muted-foreground mt-2">{service.description}</p>
                       )}
@@ -410,6 +420,10 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
                       Ausgewählter Service
                     </div>
                     <div className="text-foreground font-medium">{selectedService.name}</div>
+                    <div className="flex items-center gap-4 mt-1">
+                      <span className="text-primary text-sm">{selectedService.price}</span>
+                      <span className="text-muted-foreground text-sm">{selectedService.duration}</span>
+                    </div>
                     {selectedService.description && (
                       <p className="text-sm text-muted-foreground mt-1">{selectedService.description}</p>
                     )}
@@ -608,6 +622,16 @@ export function Booking({ preselectedService, preselectedCategory, onClose, onOp
                     <div className="text-sm text-muted-foreground">Datum & Uhrzeit</div>
                     <div className="text-foreground">
                       {selectedDate && formatDateGerman(selectedDate)} um {selectedTime}
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2 text-muted-foreground">
+                    <Clock size={16} />
+                    <span>{selectedService?.duration}</span>
+                  </div>
+                  <div className="pt-4 border-t border-border">
+                    <div className="flex justify-between items-center">
+                      <span className="text-foreground">Preis</span>
+                      <span className="text-primary text-xl">{selectedService?.price}</span>
                     </div>
                   </div>
                 </div>

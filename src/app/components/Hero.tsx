@@ -76,7 +76,7 @@ export function Hero({ onBookNow }: HeroProps) {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight"
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
-            Barbershop{' '}
+            Classic{' '}
             <span className="text-primary">Barbershop</span>
           </h1>
 
