@@ -60,6 +60,12 @@ coverage
 # Claude AI
 .claude
 
+# Serena
+.serena
+
 # Project Documentation (internal)
 PROJECT_MEMORY.md
 IMPLEMENTATION.md
+
+# .context file
+.context
