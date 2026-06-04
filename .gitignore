@@ -6,6 +6,13 @@ node_modules
 # Build output
 dist/
 dist-ssr/
+
+# Backup files
+*.backup
+
+# Original images (use optimized webp versions)
+src/assets/Interior_*.webp
+src/assets/barbers/*.jpg
 *.local
 
 # Lock files (optional - comment out if using version control for locks)
