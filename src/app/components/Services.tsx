@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
@@ -16,34 +15,29 @@ interface ServicesProps {
 
 export function Services({ onBookService }: ServicesProps) {
   const gentlemenServices: Service[] = [
-    { name: '[Herren Service Name 1]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Herren Service Name 2]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Herren Service Name 3]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Herren Service Name 4]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Herren Service Name 5]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Herren Service Name 6]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Herren Service Name 7]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Herren Service Name 8]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Herren Service Name 9]', description: '[Optionale Beschreibung]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Herren Service Name 10]', description: '[Optionale Beschreibung]', price: '[Preis]€', duration: '[Dauer]' },
+    { name: 'Trockenhaarschnitt', price: '25€', duration: '30 Min' },
+    { name: 'Waschen, Schneiden, Föhnen & Stylen', price: '35€', duration: '45 Min' },
+    { name: 'Schneiden, Rasieren, Föhnen & Stylen', price: '45€', duration: '60 Min' },
+    { name: 'Bartformrasur / Nassrasur', price: '20€', duration: '30 Min' },
+    { name: 'Kinder bis 12 Jahre', price: '18€', duration: '30 Min' },
+    { name: 'Augenbrauen zupfen', price: '12€', duration: '15 Min' },
+    { name: 'Heißwachs Ohren u. Nase', price: '10€', duration: '15 Min' },
+    { name: 'Kopfmassage', price: '20€', duration: '20 Min' },
+    { name: 'Gesichtskur', description: 'Maske, Dampfbad, Massage', price: '30€', duration: '30 Min' },
+    { name: 'Premium-Paket', description: 'Waschen, Schneiden, Bartrasur, Augenbrauen zupfen, Föhnen & Stylen', price: '65€', duration: '90 Min' },
   ];
 
   const ladiesServices: Service[] = [
-    { name: '[Damen Service Name 1]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Damen Service Name 2]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Damen Service Name 3]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Damen Service Name 4]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Damen Service Name 5]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Damen Service Name 6]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Damen Service Name 7]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Damen Service Name 8]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Damen Service Name 9]', description: '[Optionale Beschreibung]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Damen Service Name 10]', description: '[Optionale Beschreibung]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Damen Service Name 11]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Damen Service Name 12]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Damen Service Name 13]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Damen Service Name 14]', price: '[Preis]€', duration: '[Dauer]' },
-    { name: '[Damen Service Name 15]', price: '[Preis]€', duration: '[Dauer]' },
+    { name: 'Waschen/Föhnen', price: 'ab 30€', duration: '30 Min' },
+    { name: 'Waschen/Schneiden/Föhnen', price: 'ab 50€', duration: '60 Min' },
+    { name: 'Coloration', price: 'ab 55€', duration: '90 Min' },
+    { name: 'Gloss', price: 'ab 35€', duration: '45 Min' },
+    { name: 'Neufärbung', price: 'ab 60€', duration: '90 Min' },
+    { name: 'Effektsträhnen', price: 'ab 45€', duration: '60 Min' },
+    { name: 'Strähnen am Oberkopf', price: 'ab 55€', duration: '75 Min' },
+    { name: 'Strähnen komplett', price: 'ab 75€', duration: '120 Min' },
+    { name: 'Balayage (mittellänges Haar)', description: 'inkl. Pflege und Gloss', price: 'ab 120€', duration: '150 Min' },
+    { name: 'Balayage (langes Haar)', description: 'inkl. Pflege und Gloss', price: 'ab 150€', duration: '180 Min' },
   ];
 
   return (
