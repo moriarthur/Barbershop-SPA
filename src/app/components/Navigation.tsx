@@ -82,22 +82,22 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+        <div className="grid grid-cols-3 items-center h-20">
+          {/* Logo — left */}
           <button
             onClick={() => handleNavigate('home')}
-            className="flex items-center space-x-3 group cursor-pointer hover:opacity-80 transition-opacity"
+            className="flex items-center group cursor-pointer hover:opacity-80 transition-opacity justify-self-start"
             aria-label="Zur Startseite"
           >
             <img
               src={logoSvg}
               alt="Barbershop Logo"
-              className="h-12 w-auto object-contain"
+              className="h-12 w-auto object-contain -rotate-90"
             />
           </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation — center */}
+          <div className="hidden md:flex items-center justify-center space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -113,6 +113,10 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
                 {item.label}
               </button>
             ))}
+          </div>
+
+          {/* Booking Button — right */}
+          <div className="hidden md:flex justify-end">
             <Button
               onClick={() => handleNavigate('booking')}
               className="bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer select-none"
@@ -125,7 +129,7 @@ export function Navigation({ onNavigate, currentSection }: NavigationProps) {
           <button
             ref={menuButtonRef}
             onClick={toggleMenu}
-            className="md:hidden p-2 select-none rounded-lg hover:bg-primary/10 active:bg-primary/20 transition-colors"
+            className="md:hidden p-2 select-none rounded-lg hover:bg-primary/10 active:bg-primary/20 transition-colors justify-self-end"
             aria-label={isOpen ? 'Menü schließen' : 'Menü öffnen'}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
